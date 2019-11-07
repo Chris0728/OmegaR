@@ -11,7 +11,7 @@
         android:id="@+id/view2"
         android:layout_width="391dp"
         android:layout_height="684dp"
-        android:background="@drawable/Rectangle5"
+        android:background="@drawable/view"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.489"
@@ -25,7 +25,7 @@
         android:layout_marginEnd="52dp"
         android:layout_marginRight="52dp"
         android:layout_marginBottom="8dp"
-        android:background="@drawable/Rectangle1"
+        android:background="@drawable/textinput"
         android:ems="10"
         android:hint="Full name"
         android:inputType="textPersonName"
@@ -40,7 +40,7 @@
         android:layout_marginEnd="52dp"
         android:layout_marginRight="52dp"
         android:layout_marginBottom="8dp"
-        android:background="@drawable/Rectangle1"
+        android:background="@drawable/textinput"
         android:ems="10"
         android:hint="Email"
         android:inputType="textPersonName"
@@ -55,7 +55,7 @@
         android:layout_marginEnd="52dp"
         android:layout_marginRight="52dp"
         android:layout_marginBottom="8dp"
-        android:background="@drawable/Rectangle1"
+        android:background="@drawable/textinput"
         android:ems="10"
         android:hint="phone number"
         android:inputType="textPersonName"
@@ -70,7 +70,7 @@
         android:layout_marginEnd="52dp"
         android:layout_marginRight="52dp"
         android:layout_marginBottom="8dp"
-        android:background="@drawable/Rectangle1"
+        android:background="@drawable/textinput"
         android:ems="10"
         android:hint="password"
         android:inputType="textPersonName"
@@ -83,7 +83,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="60dp"
-        android:background="@drawable/Rectangle6"
+        android:background="@drawable/button"
         android:text="Register"
         android:textColor="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -109,7 +109,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginBottom="440dp"
-        android:background="@drawable/Rectangle9"
+        android:background="@drawable/view2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -130,19 +130,23 @@
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/user"
-        tools:layout_editor_absoluteX="72dp"
-        tools:layout_editor_absoluteY="331dp" />
+        android:layout_marginEnd="268dp"
+        android:layout_marginRight="268dp"
+        android:layout_marginBottom="24dp"
+        app:layout_constraintBottom_toBottomOf="@+id/editText"
+        app:layout_constraintEnd_toEndOf="@+id/editText"
+        app:srcCompat="@drawable/user" />
 
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_marginLeft="12dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginBottom="24dp"
+        app:layout_constraintBottom_toBottomOf="@+id/editText2"
         app:layout_constraintStart_toStartOf="@+id/editText2"
-        app:srcCompat="@drawable/mail"
-        tools:layout_editor_absoluteY="401dp" />
+        app:srcCompat="@drawable/mail" />
 
     <androidx.constraintlayout.widget.Group
         android:id="@+id/group"
@@ -153,9 +157,12 @@
         android:id="@+id/imageView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/phone"
-        tools:layout_editor_absoluteX="72dp"
-        tools:layout_editor_absoluteY="466dp" />
+        android:layout_marginEnd="268dp"
+        android:layout_marginRight="268dp"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintBottom_toBottomOf="@+id/editText3"
+        app:layout_constraintEnd_toEndOf="@+id/editText3"
+        app:srcCompat="@drawable/phone" />
 
     <androidx.constraintlayout.widget.Group
         android:id="@+id/group2"
@@ -171,9 +178,12 @@
         android:id="@+id/imageView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/key"
-        tools:layout_editor_absoluteX="69dp"
-        tools:layout_editor_absoluteY="537dp" />
+        android:layout_marginEnd="268dp"
+        android:layout_marginRight="268dp"
+        android:layout_marginBottom="24dp"
+        app:layout_constraintBottom_toBottomOf="@+id/editText4"
+        app:layout_constraintEnd_toEndOf="@+id/editText4"
+        app:srcCompat="@drawable/key" />
 
     <androidx.constraintlayout.widget.Group
         android:id="@+id/group4"
