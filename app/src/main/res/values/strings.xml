@@ -14,4 +14,8 @@
     <string name="menu_tools">Tools</string>
     <string name="menu_share">Share</string>
     <string name="menu_send">Send</string>
+    <string name="mealhistory">Meal History</string>
+    <string name="Education">Education</string>
+    <string name="TermsAndConditions">Terms And Conditions</string>
+    <string name="Logout">Log out</string>
 </resources>
