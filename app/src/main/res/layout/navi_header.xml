@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="176dp"
     tools:context=".ratio"
-    android:background="@color/colorAccent"
+    android:background="@drawable/background"
     android:gravity="bottom"
     android:padding="16dp"
     android:theme="@style/ThemeOverlay.AppCompat.Dark"
