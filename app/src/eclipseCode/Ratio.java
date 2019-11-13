@@ -38,6 +38,10 @@ public class Ratio {
 	public double getOmega6Total() {
 		return this.omega6Total;
 	}
+
+	public Meal getMeal(int i) throws IndexOutOfBoundsException, NullPointerException {
+		return this.mealHist.get(i);
+	}
 	//
 	
 	
@@ -49,4 +53,6 @@ public class Ratio {
 		
 		return true;
 	}
+
+
 }
