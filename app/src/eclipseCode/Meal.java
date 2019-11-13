@@ -1,4 +1,3 @@
-package backend_classes;
 
 public class Meal {
 	private String name;
