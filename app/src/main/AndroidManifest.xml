@@ -9,8 +9,10 @@
         android:roundIcon="@drawable/icon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ratio"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".homepage"></activity>
+        <activity
+            android:name=".ratio"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Register" />
         <activity android:name=".MainActivity">
             <intent-filter>

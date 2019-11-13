@@ -45,7 +45,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.188"
-        app:srcCompat="@drawable/icon" />
+        app:srcCompat="@drawable/Icon" />
 
     <ImageView
         android:id="@+id/imageView4"
