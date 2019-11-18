@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Collection;
+import java.util.Iterator;
 
 public class MealHistoryRanker {
     private HashMap<String, MealShell> rankMap;
@@ -45,10 +46,27 @@ public class MealHistoryRanker {
     }
 
     public void rankMeals(){
-        Collection<MealShell> msc = this.rankMap.values();
+        Iterator it = this.rankMap.entrySet().iterator();
+
+        while(it.hasNext()){
+            Map.Entry mapElement = (Map.Entry) it.next();
+            this.rankList.add(mapElement.getValue());
+        }
+
+        Collections.sort(this.rankList);
     }
 
-    public void getTopXMeals(int num){
+    public MealShell[] getTopXMeals(int num){
+        if(num > this.rankList.size())
+            num = this.rankList.size();
+
+        MealShell[] topX = new MealShell[num];
+        rankMeals();
+
+        for(int i=0; i<num; i++)
+            topX[i] = this.rankList.get(i);
+
+        return topX;
     }
 
 

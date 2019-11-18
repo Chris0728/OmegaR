@@ -42,8 +42,8 @@ public class MealShell implements Comparable<MealShell> {
             return -1;
         else if(this.count > otherMeal.getCount())
             return 1;
-
-        return 0;
+        else
+            return 0;
     }
     //
 
