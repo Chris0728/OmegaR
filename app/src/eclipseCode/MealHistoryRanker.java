@@ -1,51 +1,54 @@
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Collection;
 
 public class MealHistoryRanker {
-    private ArrayList<String> nameTable;
-    private ArrayList<Integer> rankTable;
+    private HashMap<String, MealShell> rankMap;
+    private ArrayList<MealShell> rankList;
+
 
     public MealHistoryRanker(){
-        this.strTable = new ArrayList<String>();
-        this.rankTable = new ArrayList<Integer>();
+        this.rankMap = new HashMap<String, MealShell>();
+        this.rankList = new ArrayList<MealShell>();
     }
 
+    //Setters
+
+    //
+
+
+    //Getters
+    public int getMealCount(Meal meal){
+        String mealName = meal.getName();
+
+        if(this.rankMap.containsKey(mealName))
+            return this.rankMap.get(mealName).getCount();
+
+        return 0;
+    }
+    //
+
+
+    //General Methods
     public void addMeal(Meal meal){
-        String name = meal.getName();
-        int index, tempNum;
+        String mealName = meal.getName();
+        MealShell tempMeal = null;
 
-        if(this.nameTable.contains(name)){
-            index = this.nameTable.indexOf(name);
-            tempNum = this.rankTable.get(index);
-            tempNum++;
-            this.rankTable.set(index, tempNum);
+        if(this.rankMap.containsKey(mealName)){
+            tempMeal = this.rankMap.get(mealName);
+            tempMeal.increaseCount(1);
         } else {
-            this.nameTable.add(name);
-            index = this.nameTable.indexOf(name);
-            tempNum = 1;
-            this.rankTable.ensureCapacity(index);
-            this.rankTable.set(index, tempNum);
+            tempMeal = new MealShell(mealName);
+            tempMeal.increaseCount(1);
+            this.rankMap.put(mealName, tempMeal);
         }
     }
 
-    public String[] getTop5Meals(){
-        int num = 5;
+    public void rankMeals(){
+        Collection<MealShell> msc = this.rankMap.values();
+    }
 
-        String[] maxHeap;
-        int[] values;
-        int[] indexes;
-
-        if(num > this.nameTable.size())
-            num = this.nameTable.size();
-
-        maxHeap = new String[num];
-        indexes = new int[num];
-
-        for(int i=0; i<num; i++){
-            values[i] = this.rankTable.get(i);
-            indexes[i] = i;
-        }
-
-        return maxHeap
+    public void getTopXMeals(int num){
     }
 
 
