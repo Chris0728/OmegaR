@@ -17,16 +17,5 @@
             android:icon="@drawable/logout"
             android:title="@string/Logout"/>
     </group>
-    <item android:title="Communicate">
-        <menu>
-            <item
-                android:id="@+id/nav_share"
-                android:title="Share"
-                android:icon="@drawable/logout"/>
-            <item
-                android:id="@+id/nav_send"
-                android:icon="@drawable/warning"
-                android:title="Send"/>
-        </menu>
-    </item>
+
 </menu>
