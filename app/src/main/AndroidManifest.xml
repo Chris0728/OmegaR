@@ -9,7 +9,8 @@
         android:roundIcon="@drawable/icon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MealInput"></activity>
+        <activity android:name=".Calculate_Ratio"></activity>
+        <activity android:name=".MealInput" />
         <activity android:name=".homepage" />
         <activity
             android:name=".ratio"
