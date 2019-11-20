@@ -5,17 +5,16 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
-import com.example.omegar.ui.drawer;
 import com.google.android.material.navigation.NavigationView;
 
-public class homepage extends AppCompatActivity {
+public class Homepage extends AppCompatActivity {
     private DrawerLayout dl;
     private ActionBarDrawerToggle t;
     private NavigationView nv;
@@ -43,29 +42,46 @@ public class homepage extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 int id = item.getItemId();
+                //Fragment page = null;
+                //Class fragmentClass = null;
+
                 switch(id)
                 {
                     case R.id.nav_mealHistory:
-                        Toast.makeText(homepage.this, "meal History",Toast.LENGTH_SHORT).show();
-                        dl.closeDrawer(nv);
+                        Toast.makeText(Homepage.this, "meal History",Toast.LENGTH_SHORT).show();
+                        Intent intentHistory = new Intent(getBaseContext(), mealHistory.class);
+                        startActivity(intentHistory);
+                        //fragmentClass = MealHistory.class;
                         break;
                     case R.id.nav_Education:
-                        Toast.makeText(homepage.this, "Education",Toast.LENGTH_SHORT).show();
-                        dl.closeDrawer(nv);
+                        Toast.makeText(Homepage.this, "Education",Toast.LENGTH_SHORT).show();
+                        Intent intentEducation = new Intent(getBaseContext(), Education.class);
+                        startActivity(intentEducation);
                         break;
                     case R.id.nav_TermsAndConditions:
-                        Toast.makeText(homepage.this, "Terms And Conditions",Toast.LENGTH_SHORT).show();
-                        dl.closeDrawer(nv);
+                        Toast.makeText(Homepage.this, "Terms And Conditions",Toast.LENGTH_SHORT).show();
+                        Intent intentTerms = new Intent(getBaseContext(), TermsAndConditions.class);
+                        startActivity(intentTerms);
                         break;
                     case R.id.nav_logout:
-                        Toast.makeText(homepage.this, "Logout",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Homepage.this, "Logout",Toast.LENGTH_SHORT).show();
                         dl.closeDrawer(nv);
                         break;
                     default:
                         return true;
                 }
 
+                //this was used for fragments. Ignore
+                try {
+                    //page = (Fragment) fragmentClass.newInstance();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
 
+
+                //FragmentManager fragmentManager = getSupportFragmentManager();
+                //fragmentManager.beginTransaction().replace(R.id.flContent, page).commit();
+                dl.closeDrawer(nv);
                 return true;
 
             }
@@ -81,5 +97,5 @@ public class homepage extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
-    }
+}
 
