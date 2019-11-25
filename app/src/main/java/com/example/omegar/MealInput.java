@@ -23,7 +23,7 @@ public class MealInput extends AppCompatActivity {
         // Get a reference to the AutoCompleteTextView in the layout
         AutoCompleteTextView foodNameInput = findViewById(R.id.autoCompleteTextView2);
         // Get the string array
-        String[] countries = getResources().getStringArray(R.meal_names.countries_array);
+        String[] countries = getResources().getStringArray(R.array.meal_names);
         // Create the adapter and set it to the AutoCompleteTextView
         ArrayAdapter<String> adapter =
                 new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, countries);
