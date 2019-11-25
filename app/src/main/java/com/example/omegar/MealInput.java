@@ -45,10 +45,10 @@ public class MealInput extends AppCompatActivity {
                         meal = new Meal("French Fries", 2, 5, amount);
                         break;
                     case "GROUND BEEF":
-                        meal = new meal("Ground Beef", 3, 4, amount);
+                        meal = new Meal("Ground Beef", 3, 4, amount);
                         break;
                     case "RICE":
-                        meal = new meal("Rice", 1, 2, amount);
+                        meal = new Meal("Rice", 1, 2, amount);
                         break;
                     default:
                         break;
