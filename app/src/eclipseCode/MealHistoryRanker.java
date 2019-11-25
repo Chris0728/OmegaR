@@ -56,6 +56,7 @@ public class MealHistoryRanker {
         Collections.sort(this.rankList);
     }
 
+    //Returns an array of a specified number of meals ranked by popularity
     public MealShell[] getTopXMeals(int num){
         if(num > this.rankList.size())
             num = this.rankList.size();
