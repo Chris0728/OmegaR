@@ -12,6 +12,8 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.omegar.NonActivityClasses.Meal;
+
 
 public class MealInput extends AppCompatActivity {
 
@@ -21,7 +23,7 @@ public class MealInput extends AppCompatActivity {
         setContentView(R.layout.activity_meal_input2);
 
         // Get a reference to the AutoCompleteTextView in the layout
-        AutoCompleteTextView foodNameInput = findViewById(R.id.autoCompleteTextView2);
+        final AutoCompleteTextView foodNameInput = findViewById(R.id.autoCompleteTextView2);
         // Get the string array
         String[] countries = getResources().getStringArray(R.array.meal_names);
         // Create the adapter and set it to the AutoCompleteTextView
@@ -29,12 +31,29 @@ public class MealInput extends AppCompatActivity {
                 new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, countries);
         foodNameInput.setAdapter(adapter);
 
-        EditText foodWeightInput = findViewById(R.id.editText6);
+        final EditText foodWeightInput = findViewById(R.id.editText6);
 
         final Button mealInputButton = findViewById(R.id.input_meal); //change to button ID
         mealInputButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+                //For Demo Only
+                Meal meal;
+                double amount = Double.parseDouble(foodWeightInput.getText().toString());
 
+                switch(foodNameInput.getText().toString().toUpperCase()){
+                    case "FRENCH FRIES":
+                        meal = new Meal("French Fries", 2, 5, amount);
+                        break;
+                    case "GROUND BEEF":
+                        meal = new meal("Ground Beef", 3, 4, amount);
+                        break;
+                    case "RICE":
+                        meal = new meal("Rice", 1, 2, amount);
+                        break;
+                    default:
+                        break;
+
+                }
             }
         });
 
