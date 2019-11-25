@@ -17,6 +17,11 @@
     <string name="dinner">Dinner</string>
     <string name="lunch">Lunch</string>
     <string name="enter_meal">Enter meal</string>
+    <string-array name="meal_names">
+        <item>French Fries</item>
+        <item>Ground Beef</item>
+        <item>Rice</item>
+    </string-array>
     <string name="enter_weight_in_grams">Enter weight in grams</string>
     <string name="x">X</string>
 </resources>
