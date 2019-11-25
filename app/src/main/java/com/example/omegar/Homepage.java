@@ -86,7 +86,14 @@ public class Homepage extends AppCompatActivity {
 
             }
         });
-
+        final ImageButton profile = findViewById(R.id.profile);
+        profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentProfile = new Intent(getBaseContext(), Profile.class);
+                startActivity(intentProfile);
+            }
+        });
     }
 
     @Override

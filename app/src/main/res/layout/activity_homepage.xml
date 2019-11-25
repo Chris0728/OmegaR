@@ -8,16 +8,16 @@
     android:background="@drawable/background"
     tools:context=".Homepage">
 
-    <FrameLayout
-        android:id="@+id/flContent"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="@dimen/activity_horizontal_margin"
         android:layout_height="@dimen/activity_vertical_margin"
         android:id="@+id/constraintLayout_homepage">
 
-    <View
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/circle"/>
+        <View
         android:id="@+id/view2"
         android:layout_width="391dp"
         android:layout_height="630dp"
@@ -28,7 +28,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.841" />
 
-    <Button
+        <Button
         android:id="@+id/button5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -65,7 +65,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.039" />
 
-    <ProgressBar
+        <ProgressBar
         android:id="@+id/progressBar"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="250dp"

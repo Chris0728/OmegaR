@@ -19,57 +19,39 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/registerEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="52dp"
         android:layout_marginRight="52dp"
-        android:layout_marginBottom="8dp"
-        android:background="@drawable/textinput"
-        android:ems="10"
-        android:hint="Full name"
-        android:inputType="textPersonName"
-        android:paddingLeft="40dp"
-        app:layout_constraintBottom_toTopOf="@+id/editText2"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <EditText
-        android:id="@+id/editText2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="52dp"
-        android:layout_marginRight="52dp"
-        android:layout_marginBottom="8dp"
         android:background="@drawable/textinput"
         android:ems="10"
         android:hint="Email"
         android:inputType="textPersonName"
         android:paddingLeft="40dp"
-        app:layout_constraintBottom_toTopOf="@+id/editText3"
+        app:layout_constraintBottom_toTopOf="@+id/registerPhone"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <EditText
-        android:id="@+id/editText3"
+        android:id="@+id/registerPhone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="52dp"
         android:layout_marginRight="52dp"
-        android:layout_marginBottom="8dp"
         android:background="@drawable/textinput"
         android:ems="10"
         android:hint="phone number"
         android:inputType="textPersonName"
         android:paddingLeft="40dp"
-        app:layout_constraintBottom_toTopOf="@+id/editText4"
+        app:layout_constraintBottom_toTopOf="@+id/registerPwd"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <EditText
-        android:id="@+id/editText4"
+        android:id="@+id/registerPwd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="52dp"
         android:layout_marginRight="52dp"
-        android:layout_marginBottom="8dp"
         android:background="@drawable/textinput"
         android:ems="10"
         android:hint="password"
@@ -78,8 +60,33 @@
         app:layout_constraintBottom_toTopOf="@+id/checkedTextView"
         app:layout_constraintEnd_toEndOf="parent" />
 
+    <EditText
+        android:id="@+id/registerName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="52dp"
+        android:layout_marginRight="52dp"
+        android:background="@drawable/textinput"
+        android:ems="10"
+        android:hint="Full name"
+        android:inputType="textPersonName"
+        android:paddingLeft="40dp"
+        app:layout_constraintBottom_toTopOf="@+id/registerEmail"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <CheckBox
+        android:id="@+id/checkedTextView"
+        android:layout_width="254dp"
+        android:layout_height="29dp"
+        android:layout_marginBottom="104dp"
+        android:text="I accept the terms and conditions"
+        app:layout_constraintBottom_toBottomOf="@+id/view2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/register"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="60dp"
@@ -89,17 +96,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <CheckBox
-        android:id="@+id/checkedTextView"
-        android:layout_width="254dp"
-        android:layout_height="29dp"
-        android:layout_marginBottom="8dp"
-        android:text="I accept the terms and conditions"
-        app:layout_constraintBottom_toTopOf="@+id/button2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent" />
 
     <View
@@ -133,8 +129,8 @@
         android:layout_marginEnd="268dp"
         android:layout_marginRight="268dp"
         android:layout_marginBottom="24dp"
-        app:layout_constraintBottom_toBottomOf="@+id/editText"
-        app:layout_constraintEnd_toEndOf="@+id/editText"
+        app:layout_constraintBottom_toBottomOf="@+id/registerName"
+        app:layout_constraintEnd_toEndOf="@+id/registerName"
         app:srcCompat="@drawable/user" />
 
     <ImageView
@@ -144,8 +140,8 @@
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginBottom="24dp"
-        app:layout_constraintBottom_toBottomOf="@+id/editText2"
-        app:layout_constraintStart_toStartOf="@+id/editText2"
+        app:layout_constraintBottom_toBottomOf="@+id/registerEmail"
+        app:layout_constraintStart_toStartOf="@+id/registerEmail"
         app:srcCompat="@drawable/mail" />
 
     <androidx.constraintlayout.widget.Group
@@ -160,8 +156,8 @@
         android:layout_marginEnd="268dp"
         android:layout_marginRight="268dp"
         android:layout_marginBottom="20dp"
-        app:layout_constraintBottom_toBottomOf="@+id/editText3"
-        app:layout_constraintEnd_toEndOf="@+id/editText3"
+        app:layout_constraintBottom_toBottomOf="@+id/registerPhone"
+        app:layout_constraintEnd_toEndOf="@+id/registerPhone"
         app:srcCompat="@drawable/phone" />
 
     <androidx.constraintlayout.widget.Group
@@ -181,8 +177,8 @@
         android:layout_marginEnd="268dp"
         android:layout_marginRight="268dp"
         android:layout_marginBottom="24dp"
-        app:layout_constraintBottom_toBottomOf="@+id/editText4"
-        app:layout_constraintEnd_toEndOf="@+id/editText4"
+        app:layout_constraintBottom_toBottomOf="@+id/registerPwd"
+        app:layout_constraintEnd_toEndOf="@+id/registerPwd"
         app:srcCompat="@drawable/key" />
 
     <androidx.constraintlayout.widget.Group
