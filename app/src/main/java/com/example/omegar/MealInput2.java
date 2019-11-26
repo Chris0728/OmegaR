@@ -77,7 +77,7 @@ public class MealInput2 extends AppCompatActivity {
 
                 }
 
-                Intent mealIntent = new Intent(MealInput2.this, MealInput.class);
+                Intent mealIntent = new Intent(getBaseContext(), MealInput.class);
 
                 mealIntent.putExtra("MEAL", meal);
                 /*
