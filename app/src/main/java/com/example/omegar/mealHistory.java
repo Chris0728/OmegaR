@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class MealHistory extends AppCompatActivity {
+public class mealHistory extends AppCompatActivity {
 
     private Button backBtn;
 
@@ -19,7 +19,7 @@ public class MealHistory extends AppCompatActivity {
         backBtn.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
-                MealHistory.super.onBackPressed();
+                mealHistory.super.onBackPressed();
             }
         });
     }

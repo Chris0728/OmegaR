@@ -51,7 +51,7 @@ public class Homepage extends AppCompatActivity {
                 {
                     case R.id.nav_mealHistory:
                         Toast.makeText(Homepage.this, "meal History",Toast.LENGTH_SHORT).show();
-                        Intent intentHistory = new Intent(getBaseContext(), MealHistory.class);
+                        Intent intentHistory = new Intent(getBaseContext(), mealHistory.class);
                         startActivity(intentHistory);
                         //fragmentClass = MealHistory.class;
                         break;
