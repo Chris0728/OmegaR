@@ -19,6 +19,11 @@ import com.example.omegar.NonActivityClasses.Meal;
 public class MealInput extends AppCompatActivity {
     private final double defaultVal = 0.00;
 
+    private Button backBtn;
+    private Button breakfastBtn;
+    private Button lunchBtn;
+    private Button dinnerBtn;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,10 +32,35 @@ public class MealInput extends AppCompatActivity {
         Intent mealIntent = this.getIntent();
         Meal meal = (Meal) mealIntent.getSerializableExtra("MEAL");
 
-        final Button backButton = findViewById(R.id.back); //change to button ID
-        backButton.setOnClickListener(new View.OnClickListener() {
+        backBtn = findViewById(R.id.back); //change to button ID
+        breakfastBtn = findViewById(R.id.breakfast);
+        lunchBtn = findViewById(R.id.lunch);
+        dinnerBtn = findViewById(R.id.dinner);
+
+        backBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                // Do something in response to button click
+                MealInput.super.onBackPressed();
+            }
+        });
+
+        breakfastBtn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v){
+                Intent nextAct = new Intent(getBaseContext(), MealInput2.class);
+                startActivity(nextAct);
+            }
+        });
+
+        lunchBtn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v){
+                Intent nextAct = new Intent(getBaseContext(), MealInput2.class);
+                startActivity(nextAct);
+            }
+        });
+
+        dinnerBtn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v){
+                Intent nextAct = new Intent(getBaseContext(), MealInput2.class);
+                startActivity(nextAct);
             }
         });
     }

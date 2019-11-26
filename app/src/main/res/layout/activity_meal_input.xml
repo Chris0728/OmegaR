@@ -49,7 +49,7 @@
         app:layout_constraintVertical_bias="0.192" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/breakfast"
         style="?android:attr/borderlessButtonStyle"
         android:layout_width="370dp"
         android:layout_height="wrap_content"
@@ -64,7 +64,7 @@
         app:layout_constraintVertical_bias="0.326" />
 
     <Button
-        android:id="@+id/button6"
+        android:id="@+id/lunch"
         style="?android:attr/borderlessButtonStyle"
         android:layout_width="370dp"
         android:layout_height="wrap_content"
@@ -79,7 +79,7 @@
         app:layout_constraintVertical_bias="0.412" />
 
     <Button
-        android:id="@+id/button7"
+        android:id="@+id/dinner"
         style="?android:attr/borderlessButtonStyle"
         android:layout_width="370dp"
         android:layout_height="wrap_content"

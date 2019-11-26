@@ -97,11 +97,11 @@ public class Homepage extends AppCompatActivity {
             }
         });
 
-        Button inputMealBtn = findViewById(R.id.inputMealBtn);
+        Button inputMealBtn = findViewById(R.id.input_meal_button);
         inputMealBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getBaseContext(), meal_input2.class);
+                Intent intent = new Intent(getBaseContext(), MealInput.class);
                 startActivity(intent);
             }
         });
