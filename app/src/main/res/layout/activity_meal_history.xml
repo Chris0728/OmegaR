@@ -27,8 +27,6 @@
 
         <com.jjoe64.graphview.GraphView
             android:id="@+id/myGraph"
-            layout_height="match_parent"
-            layout_width="match_parent"
             android:layout_width="300dp"
             android:layout_height="300dp"
             android:layout_centerInParent="true"
@@ -47,6 +45,19 @@
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="102dp"
             android:text="Weekly/Monthly" />
+
+        <TextView
+            android:id="@+id/graphTitle"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="150dp"
+            android:layout_marginEnd="171dp"
+            android:layout_marginRight="171dp"
+            android:text="error"
+            android:textAlignment="center"
+            android:textSize="30sp"
+            android:textStyle="bold" />
 
     </RelativeLayout>
 
