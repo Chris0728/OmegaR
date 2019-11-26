@@ -16,7 +16,7 @@
         <activity android:name=".Profile" />
         <activity android:name=".TermsAndConditions" />
         <activity android:name=".Education" />
-        <activity android:name=".mealHistory" />
+        <activity android:name=".MealHistory" />
         <activity android:name=".navigation" />
         <activity android:name=".Register" />
         <activity android:name=".MainActivity">
