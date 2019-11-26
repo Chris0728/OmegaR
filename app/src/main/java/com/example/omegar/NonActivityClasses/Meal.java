@@ -1,6 +1,8 @@
 package com.example.omegar.NonActivityClasses;
 
-public class Meal {
+import java.io.Serializable;
+
+public class Meal implements Serializable {
     private String name;
     private double omega3;		//mg per 100g of food
     private double omega6;		//mg per 100g of food
