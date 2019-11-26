@@ -52,7 +52,7 @@ public class mealHistory extends AppCompatActivity {
                 if (isMonthly) {
                     displayWeek();
                 } else {
-                    displayMonth2();
+                    displayMonth();
                 }
             }
         });
@@ -89,26 +89,11 @@ public class mealHistory extends AppCompatActivity {
 
     //I will make a method below this with hardcoded values
     //This method was 1st attempt at chanign graph to monlty
-    public void displayMonth() {
-        isMonthly = true;
-        setGraphTitle("Month");
-        try {
-            //to remove existing graph data.
-            clearGraph();
-
-            //LineGraphSeries<DataPoint> series = makePoints();
-            series = makePoints();
-            graph.addSeries(series);
-
-        } catch (IllegalArgumentException e) {
-            Toast.makeText(mealHistory.this, e.getMessage(), Toast.LENGTH_LONG).show();
-        }
-    }
 
     //2nd attempt at changng graph to monthly
     //Update: Holy shit this actually works.
     // TODO: 11/26/2019 Change this method's name to displayMonth and delete the duplicate method above cuz it dont work.
-    public void displayMonth2() {
+    public void displayMonth() {
         isMonthly = true;
         setGraphTitle("Month");
         int arraySize = 30;
@@ -116,31 +101,6 @@ public class mealHistory extends AppCompatActivity {
 
         try {
             clearGraph();
-
-            /*
-            for (int i = 0; i < arraySize; i++) {
-                data[i] = (new DataPoint(i, (int) (Math.random() * 11) + 0));
-            }
-            */
-
-            //resetting existing data inside series and placing this.data array values into newly emptied series.
-            //series.resetData(data);
-
-                   /*
-                    REASON FOR LINE above COMMENT OUT:
-                    This method threw fatal exception.
-
-                    console message when exception was thrown:
-                    E/AndroidRuntime: FATAL EXCEPTION: main
-                    Process: com.example.omegar, PID: 6781
-                    java.lang.NullPointerException: Attempt to invoke virtual method 'void com.jjoe64.graphview.series.LineGraphSeries.resetData(com.jjoe64.graphview.series.DataPointInterface[])' on a null object reference
-                    at com.example.omegar.mealHistory.displayMonth2(mealHistory.java:118)
-                    at com.example.omegar.mealHistory$1.onClick(mealHistory.java:46)
-                    */
-
-            //below i tried an alternative method to change to monthly graph with hardcoded randomized addition of values to series.
-
-            graph.removeAllSeries();//removing current values from series that was from weekly.
 
             LineGraphSeries<DataPoint> series = new LineGraphSeries<DataPoint>
                     (new DataPoint[]{
