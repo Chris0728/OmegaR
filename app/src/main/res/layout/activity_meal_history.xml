@@ -4,33 +4,65 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".mealHistory"
-    android:background="@drawable/background">
+    android:background="@drawable/background"
+    tools:context=".mealHistory">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="16dp"
+        android:layout_centerHorizontal="true">
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="391dp"
+            android:layout_height="630dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="30dp"
+            android:background="@drawable/view" />
+
+        <com.jjoe64.graphview.GraphView
+            android:id="@+id/myGraph"
+            layout_height="match_parent"
+            layout_width="match_parent"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:layout_centerInParent="true"
+            android:layout_marginEnd="111dp"
+            android:layout_marginRight="111dp"
+            android:layout_marginBottom="260dp"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <Button
+            android:id="@+id/displayWeekOrMonth"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="102dp"
+            android:text="Weekly/Monthly" />
+
+    </RelativeLayout>
 
     <Button
         android:id="@+id/back"
+        style="?android:attr/borderlessButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginLeft="32dp"
         android:layout_marginTop="28dp"
-        android:text="@string/Back"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:textColor="#FFFFFF"
-        style="?android:attr/borderlessButtonStyle"
         android:background="#008AE8"
-        android:textSize="20dp"/>
-
-    <View
-        android:id="@+id/view"
-        android:layout_width="391dp"
-        android:layout_height="630dp"
-        android:background="@drawable/view"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:text="@string/Back"
+        android:textColor="#FFFFFF"
+        android:textSize="20dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.841" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
