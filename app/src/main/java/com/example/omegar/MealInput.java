@@ -18,23 +18,25 @@ import com.example.omegar.NonActivityClasses.Meal;
 
 public class MealInput extends AppCompatActivity {
 
+    /*
     private Button backBtn;
     private Button breakfastBtn;
     private Button lunchBtn;
     private Button dinnerBtn;
+     */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_meal_input2);
+        setContentView(R.layout.activity_meal_input);
 
         //Intent mealIntent = this.getIntent();
         //Meal meal = (Meal) mealIntent.getSerializableExtra("MEAL");
 
-        backBtn = findViewById(R.id.back); //change to button ID
-        breakfastBtn = findViewById(R.id.breakfast);
-        lunchBtn = findViewById(R.id.lunch);
-        dinnerBtn = findViewById(R.id.dinner);
+        final Button backBtn = findViewById(R.id.back); //change to button ID
+        final Button breakfastBtn = findViewById(R.id.breakfast);
+        final Button lunchBtn = findViewById(R.id.lunch);
+        final Button dinnerBtn = findViewById(R.id.dinner);
 
         backBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {

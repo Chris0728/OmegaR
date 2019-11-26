@@ -20,7 +20,6 @@ public class Homepage extends AppCompatActivity {
     private ActionBarDrawerToggle t;
     private NavigationView nv;
     private ImageButton burgerMenu;
-    private Button inputMealBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,7 +97,7 @@ public class Homepage extends AppCompatActivity {
             }
         });
 
-        inputMealBtn = findViewById(R.id.input_meal_button);
+        final Button inputMealBtn = findViewById(R.id.input_meal_button);
         inputMealBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
