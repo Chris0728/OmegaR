@@ -35,6 +35,7 @@ public class MealInput extends AppCompatActivity {
 
         final Button backBtn = findViewById(R.id.back); //change to button ID
         backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
             public void onClick(View v) {
                 MealInput.super.onBackPressed();
             }
@@ -42,6 +43,7 @@ public class MealInput extends AppCompatActivity {
 
         final Button breakfastBtn = findViewById(R.id.breakfast);
         breakfastBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
             public void onClick(View v){
                 Intent nextAct = new Intent(getBaseContext(), MealInput2.class);
                 startActivity(nextAct);
@@ -50,6 +52,7 @@ public class MealInput extends AppCompatActivity {
 
         final Button lunchBtn = findViewById(R.id.lunch);
         lunchBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
             public void onClick(View v){
                 Intent nextAct = new Intent(getBaseContext(), MealInput2.class);
                 startActivity(nextAct);
@@ -58,6 +61,7 @@ public class MealInput extends AppCompatActivity {
 
         final Button dinnerBtn = findViewById(R.id.dinner);
         dinnerBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
             public void onClick(View v){
                 Intent nextAct = new Intent(getBaseContext(), MealInput2.class);
                 startActivity(nextAct);

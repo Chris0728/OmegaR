@@ -95,7 +95,7 @@ public class MealInput2 extends AppCompatActivity {
         final Button backButton = findViewById(R.id.back); //change to button ID
         backButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                // Do something in response to button click
+                MealInput2.super.onBackPressed();
             }
         });
 
