@@ -26,6 +26,14 @@ public class Homepage extends AppCompatActivity {
         dl = (DrawerLayout)findViewById(R.id.homepage);
         t = new ActionBarDrawerToggle(this, dl,R.string.navigation_drawer_open, R.string.navigation_drawer_close);
 
+        final Intent registerInfo = getIntent();
+        //unloading all data from previous activity
+        final String name = registerInfo.getStringExtra("Name");
+        final String email = registerInfo.getStringExtra("Email");
+        final String phone = registerInfo.getStringExtra("Phone");
+        final String pwd = registerInfo.getStringExtra("Pwd");
+
+
         dl.addDrawerListener(t);
         t.syncState();
 
@@ -91,6 +99,12 @@ public class Homepage extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intentProfile = new Intent(getBaseContext(), Profile.class);
+
+                intentProfile.putExtra("Name", name);
+                intentProfile.putExtra("Email", email);
+                intentProfile.putExtra("Phone", phone);
+                intentProfile.putExtra("Pwd", pwd);
+
                 startActivity(intentProfile);
             }
         });
