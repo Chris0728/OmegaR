@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
@@ -19,6 +20,7 @@ public class Homepage extends AppCompatActivity {
     private ActionBarDrawerToggle t;
     private NavigationView nv;
     private ImageButton burgerMenu;
+    private Button inputMealBtn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -94,6 +96,15 @@ public class Homepage extends AppCompatActivity {
                 startActivity(intentProfile);
             }
         });
+
+        Button inputMealBtn = findViewById(R.id.inputMealBtn);
+        inputMealBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getBaseContext(), meal_input2.class);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -104,5 +115,6 @@ public class Homepage extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
 }
 
