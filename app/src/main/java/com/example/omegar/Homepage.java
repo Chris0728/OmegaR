@@ -21,6 +21,7 @@ public class Homepage extends AppCompatActivity {
     private NavigationView nv;
     private ImageButton burgerMenu;
     private Button inputMealBtn;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -97,12 +98,12 @@ public class Homepage extends AppCompatActivity {
             }
         });
 
-        Button inputMealBtn = findViewById(R.id.input_meal_button);
+        inputMealBtn = findViewById(R.id.input_meal_button);
         inputMealBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getBaseContext(), MealInput.class);
-                startActivity(intent);
+                Intent intentMealInput = new Intent(getBaseContext(), MealInput.class);
+                startActivity(intentMealInput);
             }
         });
     }

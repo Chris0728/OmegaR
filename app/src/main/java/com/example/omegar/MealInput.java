@@ -17,7 +17,6 @@ import com.example.omegar.NonActivityClasses.Meal;
 
 
 public class MealInput extends AppCompatActivity {
-    private final double defaultVal = 0.00;
 
     private Button backBtn;
     private Button breakfastBtn;
@@ -29,8 +28,8 @@ public class MealInput extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_meal_input2);
 
-        Intent mealIntent = this.getIntent();
-        Meal meal = (Meal) mealIntent.getSerializableExtra("MEAL");
+        //Intent mealIntent = this.getIntent();
+        //Meal meal = (Meal) mealIntent.getSerializableExtra("MEAL");
 
         backBtn = findViewById(R.id.back); //change to button ID
         breakfastBtn = findViewById(R.id.breakfast);
