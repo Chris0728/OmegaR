@@ -16,7 +16,8 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/circle"/>
+            android:background="@drawable/circle" />
+
         <View
         android:id="@+id/view2"
         android:layout_width="391dp"
