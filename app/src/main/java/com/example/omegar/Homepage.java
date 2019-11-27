@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,16 +25,49 @@ public class Homepage extends AppCompatActivity {
     private ImageButton burgerMenu;
     private TextView ratioDisplay;
     public static MealData meals = new MealData();
+    private ImageView redCircle, yellowCircle, greenCircle;
     @Override
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_homepage);
+
+
         ratioDisplay = findViewById(R.id.ratioDisplay);
+        redCircle = findViewById(R.id.redCircle);
+        yellowCircle = findViewById(R.id.yellowCircle);
+        greenCircle = findViewById(R.id.greenCircle);
+
+
         if(meals.getSize()==0)
         {ratioDisplay.setText("Please enter a meal");}
         else {
             ratioDisplay.setText(meals.calculate());
+        }
+        int range=0;
+        if(meals.geto6()<=4){
+            range = 1;
+        }
+        if(meals.geto6()>4 && meals.geto6()<=10){
+            range =2;
+        }
+        if(meals.geto6()>10){
+            range = 3;
+        }
+        switch(range){
+            case 1:
+                    greenCircle.setVisibility(View.VISIBLE);
+                    yellowCircle.setVisibility(View.INVISIBLE);
+                    redCircle.setVisibility(View.INVISIBLE);
+                    break;
+            case 2:greenCircle.setVisibility(View.INVISIBLE);
+                    yellowCircle.setVisibility(View.VISIBLE);
+                    redCircle.setVisibility(View.INVISIBLE);
+                    break;
+            case 3:greenCircle.setVisibility(View.INVISIBLE);
+                    yellowCircle.setVisibility(View.INVISIBLE);
+                    redCircle.setVisibility(View.VISIBLE);
+                    break;
         }
         dl = (DrawerLayout)findViewById(R.id.homepage);
         t = new ActionBarDrawerToggle(this, dl,R.string.navigation_drawer_open, R.string.navigation_drawer_close);

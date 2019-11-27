@@ -5,6 +5,7 @@ import java.util.List;
 
 public class MealData {
     List<Meal> meals = new ArrayList<Meal>();
+    double saveo6=0;
     public MealData(){
 
     }
@@ -23,11 +24,15 @@ public class MealData {
         }
 
         o6 = o6/o3;
-        builder.append(o6 + ":"+ 1);
+        saveo6 = o6;
+        builder.append(Math.round(o6) + " : "+ 1);
 
         return builder.toString();
     }
 
+    public double geto6(){
+      return saveo6;
+    }
     public int getSize(){
         return meals.size();
     }

@@ -51,7 +51,7 @@ public class MealInput2 extends AppCompatActivity {
 
                 switch(foodNameInput.getText().toString().toUpperCase()){
                     case "FRENCH FRIES":
-                        meal = new Meal("French Fries", 5, 2, amount);
+                        meal = new Meal("French Fries", 1, 100, amount);
                         /*
                         mealName = "French Fries";
                         omega3 = 5;
@@ -59,7 +59,7 @@ public class MealInput2 extends AppCompatActivity {
                          */
                         break;
                     case "GROUND BEEF":
-                        meal = new Meal("Ground Beef", 3, 4, amount);
+                        meal = new Meal("Ground Beef", 3, 400, amount);
                         /*
                         mealName = "Ground Beef";
                         omega3 = 3;
@@ -67,7 +67,7 @@ public class MealInput2 extends AppCompatActivity {
                          */
                         break;
                     case "RICE":
-                        meal = new Meal("Rice", 1, 2, amount);
+                        meal = new Meal("Rice", 10, 1, amount);
                         /*
                         mealName = "Rice";
                         omega3 = 1;
