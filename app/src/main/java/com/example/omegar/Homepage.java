@@ -108,7 +108,14 @@ public class Homepage extends AppCompatActivity {
                 startActivity(intentProfile);
             }
         });
+
+
+        //Displaying ratio with data that was came from MealInput2.class.
+
+
     }
+
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
