@@ -18,12 +18,10 @@ import com.example.omegar.NonActivityClasses.Meal;
 
 public class MealInput extends AppCompatActivity {
 
-    /*
     private Button backBtn;
     private Button breakfastBtn;
     private Button lunchBtn;
     private Button dinnerBtn;
-     */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +31,13 @@ public class MealInput extends AppCompatActivity {
         //Intent mealIntent = this.getIntent();
         //Meal meal = (Meal) mealIntent.getSerializableExtra("MEAL");
 
-        final Button backBtn = findViewById(R.id.back); //change to button ID
+        //Button Init
+        this.backBtn = findViewById(R.id.back); //change to button ID
+        this.breakfastBtn = findViewById(R.id.breakfast);
+        this.lunchBtn = findViewById(R.id.lunch);
+        this.dinnerBtn = findViewById(R.id.dinner);
+
+        //Button Setup
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -41,7 +45,6 @@ public class MealInput extends AppCompatActivity {
             }
         });
 
-        final Button breakfastBtn = findViewById(R.id.breakfast);
         breakfastBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
@@ -50,7 +53,6 @@ public class MealInput extends AppCompatActivity {
             }
         });
 
-        final Button lunchBtn = findViewById(R.id.lunch);
         lunchBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
@@ -59,7 +61,6 @@ public class MealInput extends AppCompatActivity {
             }
         });
 
-        final Button dinnerBtn = findViewById(R.id.dinner);
         dinnerBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
