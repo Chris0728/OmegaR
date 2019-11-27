@@ -15,6 +15,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.omegar.NonActivityClasses.Meal;
 
+import static com.example.omegar.Homepage.meals;
+
 
 public class MealInput2 extends AppCompatActivity {
 
@@ -76,10 +78,10 @@ public class MealInput2 extends AppCompatActivity {
                         break;
 
                 }
+                meals.addMeal(meal);
+                Intent mealIntent = new Intent(getBaseContext(), Homepage.class);
 
-                Intent mealIntent = new Intent(getBaseContext(), MealInput.class);
-
-                mealIntent.putExtra("MEAL", meal);
+                //mealIntent.putExtra("MEAL", meal);
                 /*
                 mealIntent.putExtra("MEAL_NAME", mealName);
                 mealIntent.putExtra("OMEGA_3", omega3);

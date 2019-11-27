@@ -11,8 +11,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.omegar.NonActivityClasses.MealData;
 import com.google.android.material.navigation.NavigationView;
 
 public class Homepage extends AppCompatActivity {
@@ -20,11 +22,19 @@ public class Homepage extends AppCompatActivity {
     private ActionBarDrawerToggle t;
     private NavigationView nv;
     private ImageButton burgerMenu;
-
+    private TextView ratioDisplay;
+    public static MealData meals = new MealData();
     @Override
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_homepage);
+        ratioDisplay = findViewById(R.id.ratioDisplay);
+        if(meals.getSize()==0)
+        {ratioDisplay.setText("Please enter a meal");}
+        else {
+            ratioDisplay.setText(meals.calculate());
+        }
         dl = (DrawerLayout)findViewById(R.id.homepage);
         t = new ActionBarDrawerToggle(this, dl,R.string.navigation_drawer_open, R.string.navigation_drawer_close);
 
