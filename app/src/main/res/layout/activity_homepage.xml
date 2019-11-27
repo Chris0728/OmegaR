@@ -30,7 +30,7 @@
         app:layout_constraintVertical_bias="0.841" />
 
         <Button
-        android:id="@+id/button5"
+        android:id="@+id/input_meal_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="INPUT MEAL"

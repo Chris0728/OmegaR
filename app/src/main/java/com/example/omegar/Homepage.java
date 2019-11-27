@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
@@ -19,6 +20,7 @@ public class Homepage extends AppCompatActivity {
     private ActionBarDrawerToggle t;
     private NavigationView nv;
     private ImageButton burgerMenu;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -109,9 +111,14 @@ public class Homepage extends AppCompatActivity {
             }
         });
 
-
-        //Displaying ratio with data that was came from MealInput2.class.
-
+        final Button inputMealBtn = findViewById(R.id.input_meal_button);
+        inputMealBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentMealInput = new Intent(getBaseContext(), MealInput.class);
+                startActivity(intentMealInput);
+            }
+        });
 
     }
 
@@ -125,5 +132,6 @@ public class Homepage extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
 }
 

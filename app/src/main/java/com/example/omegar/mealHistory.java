@@ -1,21 +1,21 @@
 package com.example.omegar;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 
+
+
 public class mealHistory extends AppCompatActivity {
 
     private Button backBtn;
+
     private Button displayWeekOrMonth;
     private boolean isMonthly;                      // true == graph is currently displaying monthly data. This bool is needed for the displayWeekOrMonth button. // TODO: 11/26/2019 Is this bool really needed?
     LineGraphSeries<DataPoint> totalSeries;
@@ -31,9 +31,11 @@ public class mealHistory extends AppCompatActivity {
     //  (2) save series into local file to keep record
     //  (3) check local series file against DB to ensure accuracy of data.
 
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_meal_history);
+
 
         graph = (GraphView) findViewById(R.id.myGraph);
         graph.setVisibility(View.VISIBLE);
@@ -60,10 +62,12 @@ public class mealHistory extends AppCompatActivity {
 
         backBtn = findViewById(R.id.back);
         backBtn.setOnClickListener(new View.OnClickListener() {
+
             public void onClick(View v) {
                 mealHistory.super.onBackPressed();
             }
         });
+
 
     }
 
