@@ -123,4 +123,22 @@ The limitations and prohibitions of liability set in this Section and elsewhere 
 
 As long as the website and the information and services on the website are provided free of charge, we will not be liable for any loss or damage of any nature.
 </string>
+
+
+
+
+
+    <string name="loremIpsum">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque id porta urna, eget vulputate ante. Vestibulum rutrum nunc magna, eu lacinia lacus sollicitudin sit amet. Suspendisse vel ultricies erat. In hac habitasse platea dictumst. Nullam imperdiet tristique dapibus. Nulla quis augue semper, facilisis velit id, mattis purus. Mauris sodales in metus quis fringilla. Nam convallis sem vel ante tempus, nec gravida nibh placerat.
+
+Curabitur ac lobortis libero, in pharetra arcu. Donec vestibulum diam at eros faucibus molestie. Sed ut feugiat leo, nec vestibulum ante. Morbi condimentum tincidunt accumsan. Vivamus vitae dignissim nibh. Aliquam nec tellus id eros tempor pellentesque at at lectus. Mauris porttitor purus lectus. Suspendisse vulputate neque quis nisl dictum, vitae pellentesque est ultricies. Vestibulum ut pharetra enim. Donec ac dolor ligula.
+
+Donec at ex eu nulla aliquam tincidunt. Pellentesque posuere accumsan eros, sit amet finibus massa. Maecenas id tellus varius, auctor risus et, iaculis libero. Sed egestas nisi eget erat condimentum efficitur. Vivamus lectus velit, condimentum nec tellus ut, elementum porta purus. Maecenas in vehicula neque. Nulla volutpat mollis ante, id ornare risus imperdiet ac. Quisque mattis purus a dui cursus, in rhoncus justo ullamcorper.
+
+In blandit eleifend gravida. Praesent malesuada massa id ligula suscipit egestas. Suspendisse vitae diam purus. Integer posuere augue eu nunc blandit tempus. Fusce cursus luctus massa ut faucibus. Curabitur semper id risus sit amet hendrerit. Curabitur ac erat nec nulla suscipit malesuada. Curabitur ut dolor posuere, aliquet lacus a, maximus quam. Ut in convallis neque. Pellentesque aliquam ligula et eros congue, sit amet rutrum augue rutrum.
+
+Integer ac cursus quam. Nulla et lacus efficitur, elementum tellus ultrices, placerat urna. Nulla gravida turpis dui, euismod porta erat posuere id. Aenean tempus enim sapien, posuere feugiat diam consequat vel. Vestibulum at erat turpis. Sed ut rutrum neque, sit amet varius neque. Quisque elementum quam sapien, nec vulputate metus accumsan et. Suspendisse placerat pellentesque interdum. Duis ultricies, sem finibus mattis tempus, nisl neque scelerisque diam,
+
+ac maximus massa magna eu diam. Pellentesque augue justo, vestibulum eget facilisis quis, aliquam quis leo.
+    </string>
 </resources>
