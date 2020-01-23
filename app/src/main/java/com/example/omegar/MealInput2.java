@@ -14,8 +14,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.omegar.NonActivityClasses.Meal;
-
-import static com.example.omegar.Homepage.meals;
+import com.example.omegar.NonActivityClasses.foodArray;
 
 
 public class MealInput2 extends AppCompatActivity {
@@ -49,9 +48,12 @@ public class MealInput2 extends AppCompatActivity {
 
                 double amount = Double.parseDouble(foodWeightInput.getText().toString());
 
+                foodArray foodarray = new foodArray();
+
+
                 switch(foodNameInput.getText().toString().toUpperCase()){
                     case "FRENCH FRIES":
-                        meal = new Meal("French Fries", 1, 100, amount);
+                        meal = new Meal("French Fries", 1, 10, amount);
                         /*
                         mealName = "French Fries";
                         omega3 = 5;
@@ -59,7 +61,7 @@ public class MealInput2 extends AppCompatActivity {
                          */
                         break;
                     case "GROUND BEEF":
-                        meal = new Meal("Ground Beef", 3, 400, amount);
+                        meal = new Meal("Ground Beef", 3, 40, amount);
                         /*
                         mealName = "Ground Beef";
                         omega3 = 3;
@@ -78,7 +80,7 @@ public class MealInput2 extends AppCompatActivity {
                         break;
 
                 }
-                meals.addMeal(meal);
+                Homepage.meals.addMeal(meal);
                 Intent mealIntent = new Intent(getBaseContext(), Homepage.class);
 
                 //mealIntent.putExtra("MEAL", meal);
