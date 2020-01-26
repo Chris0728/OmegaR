@@ -15,6 +15,10 @@ import java.sql.*;
 
 
 public class DBConnector {
+    /*
+    WARNING: BEFORE COMMITTING,
+    MAKE SURE THE URL, USER, AND PW FIELDS ARE EMPTY!
+     */
     String url = "";
     String user = "?";
     String pw = "?";
