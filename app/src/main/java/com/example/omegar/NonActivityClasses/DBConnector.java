@@ -15,7 +15,7 @@ import java.sql.*;
 
 
 public class DBConnector {
-    String url = "";
+    String url = "?";
     String user = "?";
     String pw = "?";
 
