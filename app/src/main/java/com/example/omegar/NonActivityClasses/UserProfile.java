@@ -1,5 +1,6 @@
 package com.example.omegar.NonActivityClasses;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 
 public class UserProfile {
@@ -10,41 +11,46 @@ public class UserProfile {
 
     private String firstName;
     private String lastName;
+    private String email;
     private Calendar DOB;
     private Calendar currentDate;
     private int age;
+    private String gender;
     private double height;			//Measured in cm
     private double weight;			//Measured in kg
+    private int systolicBP;
+    private int diastolicBP;
+    private ArrayList<String> disease;
 
     public UserProfile() {
         accountID++;
         currentDate = Calendar.getInstance();
+        disease = new ArrayList<String>();
     }
 
     //Setters
     public void setFirstName(String name) {
         this.firstName = name;
     }
-
     public void setLastName(String name) {
         this.lastName = name;
     }
-
+    public void setEmail(String email){this.email = email;}
     public void setDOB(int day, int month, int year) {
         this.DOB.set(year, month, day);
     }
-
     public void setAge(int age) {
         this.age = age;
     }
-
+    public void setGender(String gender) {this.gender = gender;}
     public void setHeight(double height) {
         this.height = height;
     }
-
     public void setWeight(double weight) {
         this.weight = weight;
     }
+    public void setSysBP(int bp) { this.systolicBP = bp;}
+    public void setDiasBP(int bp) {this.diastolicBP = bp;}
     //
 
 
@@ -52,30 +58,30 @@ public class UserProfile {
     public int getAccountID() {
         return accountID;
     }
-
     public String getFirstName() {
         return this.firstName;
     }
-
     public String getLastName() {
         return this.lastName;
     }
-
+    public String getEmail() {return this.email;}
     public Calendar getDOB() {
         return this.DOB;
     }
-
     public int getAge() {
         return this.age;
     }
-
+    public String getGender() { return this.gender; }
     public double getHeight() {
         return this.height;
     }
-
     public double getWeight() {
         return this.weight;
     }
+    public int getSysBP() { return this.systolicBP;}
+    public int getDiasBP(){ return this.diastolicBP;}
+    public ArrayList<String> getDisease() {return this.disease;}
+    public String getDiseaseAsStr() { return this.disease.toString();}
     //
 
 
