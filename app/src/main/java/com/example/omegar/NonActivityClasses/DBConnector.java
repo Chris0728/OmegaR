@@ -8,11 +8,18 @@ import android.util.Log;
 import android.widget.Toast;
 */
 
+import android.util.Log;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.sql.*;
 
 
+/*
+check https://developer.android.com/reference/android/app/Service.html
+to see if we can use "Service" app component to handle DBConnections
+or, do we need Async class.
+*/
 
 public class DBConnector {
     String url = "?";
@@ -84,8 +91,41 @@ public class DBConnector {
         return aa;
     }
 
+    /*
+    This method currently will get userProfile's values
+    (uid,email,pass(?maybe?),age,blood Pressure,chronic sickness,gender,weight,)
+    by looking at email from userProfile relation.
+    We expect each email to have only one email. NO duplicate accounts!!
+     */
+
+    public String[] dbGetUserByEmail(String email){
+        String[] s = new String[8]; // for 8 values mentioned above.
+        try {
+            Connection con = DriverManager.getConnection(url, user, pw);
+            Statement st1 = con.createStatement();
+            ResultSet rst = st1.executeQuery(selectUserByEmail(email));
+            rst.next(); //delete
+            s[0] = rst.getString("uid");
+            s[1] = rst.getString("uemail");
+            s[2] = rst.getString("upass");
+            s[3] = rst.getString("age");
+            s[4] = rst.getString("bp");
+            s[5] = rst.getString("chronicDisease");
+            s[6] = rst.getString("gender");
+            s[7] = rst.getString("weight");
+
+        }catch(Exception e){
+            Log.e("DB con", Log.getStackTraceString(e));
+        }
+        return s;
+    }
+
     String select(String attributes, String table){
         return "SELECT " + attributes + " FROM " + table + ";";
+    }
+
+    String selectUserByEmail(String email){
+        return select("*","userProfile WHERE uEmail='" + email + "'");
     }
 
     String insert(String relation, String values) {

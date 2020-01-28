@@ -15,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.omegar.NonActivityClasses.GlobalClass;
 import com.example.omegar.NonActivityClasses.MealData;
 import com.google.android.material.navigation.NavigationView;
 
@@ -27,23 +28,17 @@ public class Homepage extends AppCompatActivity {
     public static MealData meals = new MealData();
     private ImageView redCircle, yellowCircle, greenCircle;
 
-
-
-
     protected void onCreate(Bundle savedInstanceState) {
-
-
-
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_homepage);
+
+        GlobalClass glo = (GlobalClass) getApplication();
 
 
         ratioDisplay = findViewById(R.id.ratioDisplay);
         redCircle = findViewById(R.id.redCircle);
         yellowCircle = findViewById(R.id.yellowCircle);
         greenCircle = findViewById(R.id.greenCircle);
-
 
         if(meals.getSize()==0)
         {ratioDisplay.setText("Please enter a meal");}
@@ -78,13 +73,14 @@ public class Homepage extends AppCompatActivity {
         dl = (DrawerLayout)findViewById(R.id.homepage);
         t = new ActionBarDrawerToggle(this, dl,R.string.navigation_drawer_open, R.string.navigation_drawer_close);
 
-        final Intent registerInfo = getIntent();
+        //!!!!!!!!!!! Change the next 5 variables to final!
+        /*Intent registerInfo = getIntent();
         //unloading all data from previous activity
-        final String name = registerInfo.getStringExtra("Name");
-        final String email = registerInfo.getStringExtra("Email");
-        final String phone = registerInfo.getStringExtra("Phone");
-        final String pwd = registerInfo.getStringExtra("Pwd");
-
+        String name = registerInfo.getStringExtra("Name");
+        String email = registerInfo.getStringExtra("Email");
+        String phone = registerInfo.getStringExtra("Phone");
+        String pwd = registerInfo.getStringExtra("Pwd");
+*/
 
         dl.addDrawerListener(t);
         t.syncState();
@@ -147,17 +143,25 @@ public class Homepage extends AppCompatActivity {
 
             }
         });
-        final ImageButton profile = findViewById(R.id.profile);
+        final ImageButton profile = findViewById(R.id.profileGender);
+
+        //remove next 4 vars
+        /*
+        final String nameTemp = name;
+        final String emailTemp = name;
+        final String phoneTemp = name;
+        final String pwdTemp = name;
+*/
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intentProfile = new Intent(getBaseContext(), Profile.class);
 
-                intentProfile.putExtra("Name", name);
-                intentProfile.putExtra("Email", email);
-                intentProfile.putExtra("Phone", phone);
-                intentProfile.putExtra("Pwd", pwd);
-
+                /*intentProfile.putExtra("Name", nameTemp);
+                intentProfile.putExtra("Email", emailTemp);
+                intentProfile.putExtra("Phone", phoneTemp);
+                intentProfile.putExtra("Pwd", pwdTemp);
+*/
                 startActivity(intentProfile);
             }
         });
