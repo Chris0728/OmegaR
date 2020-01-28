@@ -12,6 +12,8 @@ import android.widget.Toast;
 
 import com.example.omegar.NonActivityClasses.DBConnector;
 
+import com.example.omegar.NonActivityClasses.foodArray;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -34,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         Button starter = findViewById(R.id.button);
+
         starter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
