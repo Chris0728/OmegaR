@@ -12,17 +12,13 @@ public class UserProfile {
     private String lastName;
     private Calendar DOB;
     private Calendar currentDate;
-    //private Date currentDate;
     private int age;
     private double height;			//Measured in cm
     private double weight;			//Measured in kg
-    //Add picture?
 
     public UserProfile() {
         accountID++;
         currentDate = Calendar.getInstance();
-        //Make currentDate using CustomDate class
-
     }
 
     //Setters
