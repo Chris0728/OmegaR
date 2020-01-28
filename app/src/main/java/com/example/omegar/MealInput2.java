@@ -28,10 +28,10 @@ public class MealInput2 extends AppCompatActivity {
         // Get a reference to the AutoCompleteTextView in the layout
         final AutoCompleteTextView foodNameInput = findViewById(R.id.autoCompleteTextView2);
         // Get the string array
-        String[] countries = getResources().getStringArray(R.array.meal_names);
+        String[] meals = getResources().getStringArray(R.array.meal_names);
         // Create the adapter and set it to the AutoCompleteTextView
         ArrayAdapter<String> adapter =
-                new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, countries);
+                new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, meals);
         foodNameInput.setAdapter(adapter);
 
         final EditText foodWeightInput = findViewById(R.id.editText6);
@@ -78,7 +78,7 @@ public class MealInput2 extends AppCompatActivity {
                         break;
 
                 }
-                meals.addMeal(meal);
+                Homepage.meals.addMeal(meal);
                 Intent mealIntent = new Intent(getBaseContext(), Homepage.class);
 
                 //mealIntent.putExtra("MEAL", meal);

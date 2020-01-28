@@ -1,7 +1,6 @@
 package com.example.omegar.NonActivityClasses;
 
-import java.util.Date;
-//import java.util.Calendar;
+import java.util.Calendar;
 
 public class UserProfile {
     private final double inchesToCm = 2.54;
@@ -11,7 +10,8 @@ public class UserProfile {
 
     private String firstName;
     private String lastName;
-    private Date DOB;
+    private Calendar DOB;
+    private Calendar currentDate;
     //private Date currentDate;
     private int age;
     private double height;			//Measured in cm
@@ -20,6 +20,7 @@ public class UserProfile {
 
     public UserProfile() {
         accountID++;
+        currentDate = Calendar.getInstance();
         //Make currentDate using CustomDate class
 
     }
@@ -33,8 +34,8 @@ public class UserProfile {
         this.lastName = name;
     }
 
-    public void setDOB(Date date) {
-        this.DOB = date;
+    public void setDOB(int day, int month, int year) {
+        this.DOB.set(year, month, day);
     }
 
     public void setAge(int age) {
@@ -64,7 +65,7 @@ public class UserProfile {
         return this.lastName;
     }
 
-    public Date getDOB() {
+    public Calendar getDOB() {
         return this.DOB;
     }
 
@@ -102,7 +103,18 @@ public class UserProfile {
 
     //Gets age based on DOB
     public int calculateAge() {
+        int year = this.DOB.get(Calendar.YEAR);
+        int month = this.DOB.get(Calendar.MONTH);
+        int day = this.DOB.get(Calendar.DATE);
+        int age;
 
-        return 0;
+        this.currentDate.add(Calendar.YEAR, year*-1);
+        this.currentDate.add(Calendar.MONTH, month*-1);
+        this.currentDate.add(Calendar.DATE, day*-1);
+
+        age = currentDate.get(Calendar.YEAR);
+        this.currentDate.getInstance();
+
+        return age;
     }
 }
