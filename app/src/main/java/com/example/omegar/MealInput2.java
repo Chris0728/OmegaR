@@ -45,6 +45,7 @@ public class MealInput2 extends AppCompatActivity {
         // Get a reference to the AutoCompleteTextView in the layout
         final AutoCompleteTextView foodNameInput = findViewById(R.id.autoCompleteTextView2);
         // Get the string array
+
         String[] countries = getResources().getStringArray(R.array.meal_names);
         ArrayList<food> converted = new ArrayList<>();
         String error = "";

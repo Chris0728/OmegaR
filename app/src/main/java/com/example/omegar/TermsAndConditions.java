@@ -7,14 +7,24 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.omegar.NonActivityClasses.DBConnector;
+
 public class TermsAndConditions extends AppCompatActivity {
 
     private Button backBtn;
     private TextView termsContent;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_terms_and_conditions);
+
+
+        DBConnector m = new DBConnector();
+        String sql = m.connectThenSelect();
+
+        termsContent = findViewById(R.id.termsContent);
+        termsContent.setText(sql);
 
         backBtn = findViewById(R.id.back);
         backBtn.setOnClickListener(new View.OnClickListener() {

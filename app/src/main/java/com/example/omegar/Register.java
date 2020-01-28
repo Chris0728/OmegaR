@@ -41,7 +41,7 @@ public class Register extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(!terms.isChecked()){
-                    Toast.makeText(Register.this,"Please aggree the terms and conditions before moving on",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Register.this,"Please agree the terms and conditions before moving on",Toast.LENGTH_SHORT).show();
                     return;
                 }
                 Intent intent = new Intent(getBaseContext(), Homepage.class);

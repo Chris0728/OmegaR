@@ -48,7 +48,8 @@
             android:id="@+id/termsContent"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="@string/termsContent"
             />
+
+        <!--android:text="@string/termsContent"-->
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

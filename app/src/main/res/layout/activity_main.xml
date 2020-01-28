@@ -46,7 +46,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.188"
-        app:srcCompat="@drawable/icon" />
+        app:srcCompat="@drawable/icon"
+        android:visibility="gone"/>
 
     <ImageView
         android:id="@+id/imageView4"
@@ -60,16 +61,15 @@
         app:srcCompat="@drawable/omegar" />
 
     <TextView
-        android:id="@+id/textView"
-        android:layout_width="241dp"
-        android:layout_height="68dp"
+        android:id="@+id/welcomeText"
+        android:layout_width="291dp"
+        android:layout_height="596dp"
         android:text="Let's get started"
-        android:textSize="30sp"
+        android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.582"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.763" />
+        app:layout_constraintVertical_bias="0.684" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
