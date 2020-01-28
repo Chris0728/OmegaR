@@ -40,25 +40,27 @@ public class MealInput2 extends AppCompatActivity {
         final AutoCompleteTextView foodNameInput = findViewById(R.id.autoCompleteTextView2);
         // Get the string array
         String[] countries = getResources().getStringArray(R.array.meal_names);
-        final ArrayList<food> converted;
-try {
-    InputStream input = getAssets().open("nutrient_database/food_api.json");
-    int size = input.available();
-    byte[] buffer = new byte[size];
-    input.read();
-    input.close();
+        ArrayList<food> converted = null;
 
-    String unconverted = new String(buffer,"UTF-8");
+    try {
+        InputStream input = getAssets().open("nutrient_database/food_api.json");
+        int size = input.available();
+        byte[] buffer = new byte[size];
+        input.read();
+        input.close();
+
+        String unconverted = new String(buffer,"UTF-8");
 
 
-    JSONArray jarray = new JSONArray(unconverted);
-    converted = new Gson().fromJson(jarray.toString(), ArrayList.class);
-}catch(IOException e){
-    e.printStackTrace();
-} catch (JSONException e) {
-    e.printStackTrace();
-}
+        JSONArray jarray = new JSONArray(unconverted);
+        converted = new Gson().fromJson(jarray.toString(), ArrayList.class);
+    }catch(IOException e){
+        e.printStackTrace();
+    } catch (JSONException e) {
+        e.printStackTrace();
+    }
 
+    converted.get(0);
 
         // Create the adapter and set it to the AutoCompleteTextView
         ArrayAdapter<String> adapter =
@@ -131,11 +133,6 @@ try {
                 MealInput2.super.onBackPressed();
             }
         });
-
-
-
-
-
     }
 
 
