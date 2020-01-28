@@ -26,9 +26,15 @@ public class Homepage extends AppCompatActivity {
     private TextView ratioDisplay;
     public static MealData meals = new MealData();
     private ImageView redCircle, yellowCircle, greenCircle;
-    @Override
+
+
+
 
     protected void onCreate(Bundle savedInstanceState) {
+
+
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_homepage);
 
@@ -94,6 +100,7 @@ public class Homepage extends AppCompatActivity {
         //ADD the line "drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);" if want to remove the default sliding function
         nv.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
+
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 int id = item.getItemId();
                 //Fragment page = null;

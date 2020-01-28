@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         re.setText(sql);
 
 
-        Toast.makeText(MainActivity.this,sql + " pls help",Toast.LENGTH_LONG).show();
+        Toast.makeText(MainActivity.this,sql,Toast.LENGTH_LONG).show();
 
 
         Button starter = findViewById(R.id.button);

@@ -4,10 +4,11 @@ import java.util.Date;
 //import java.util.Calendar;
 
 public class UserProfile {
+    DBConnector con = new DBConnector();
     private final double inchesToCm = 2.54;
     private final double lbsToGrams = 454;
 
-    private static int accountID = 0;
+    //private static int accountID = 0;
 
     private String firstName;
     private String lastName;
@@ -19,8 +20,10 @@ public class UserProfile {
     //Add picture?
 
     public UserProfile() {
-        accountID++;
+        //accountID++;
         //Make currentDate using CustomDate class
+
+
 
     }
 
@@ -53,7 +56,7 @@ public class UserProfile {
 
     //Getters
     public int getAccountID() {
-        return accountID;
+        return 0;
     }
 
     public String getFirstName() {

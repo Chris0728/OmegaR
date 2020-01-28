@@ -32,13 +32,16 @@ public class DBConnector {
 
      public  String connectThenSelect(/*String attributes, String table*/){
         DBConnector myDB = new DBConnector();
+
+        // try using string builder instead?
+        // StringBuilder s = new StringBuilder();
         String s= "";
         try{
             Connection con = DriverManager.getConnection(url,user,pw);
 
             s = s + "Connection sucessful.\n";
             Statement st = con.createStatement();
-            ResultSet rst = st.executeQuery(myDB.select("*","dept"));
+            ResultSet rst = st.executeQuery(myDB.select("*","dept WHERE dno<'20' LIMIT '10'"));
 
 
             s += ">>>Printing result set.\n";
@@ -46,15 +49,17 @@ public class DBConnector {
             s+="| dno   |   dname         |    age    |\n";
             s+="|-------------------------------------|\n";
             while(rst.next()) {
-               s+= (rst.getString("dno")) + "     " + rst.getString("dname") + "  "  + rst.getString("age") + "\n";
-                //System.out.format("| %2s | %15s | %2s|\n", rst.getString("dno"), rst.getString("dname"), rst.getString("age"));
+                s += (rst.getString("dno")) + "     "
+                  + rst.getString("dname") + "  " + rst.getString("age") + "\n";
+                //System.out.format("| %2s | %15s | %2s|\n", rst.getString("dno"),
+                //                  rst.getString("dname"), rst.getString("age"));
             }
             s+="+-------------------------------------+\n";
             s+="/n>>>Printing done.\n";
             con.close();
 
         }catch(SQLException e){
-            e.printStackTrace();
+            s+=e;
 
         }
         return s;
@@ -68,7 +73,9 @@ public class DBConnector {
             ResultSet rst = st.executeQuery("SELECT * FROM dept WHERE dno='1';");
 
             rst.next();
-            aa = rst.getString("dno") + "        " + rst.getString("dname") + "      " + rst.getString("age");
+            aa = rst.getString("dno") + "        " +
+                 rst.getString("dname") + "      " +
+                 rst.getString("age");
 
         }catch(SQLException e){
             aa= "Error: " + e + "||";
