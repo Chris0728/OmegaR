@@ -1,6 +1,7 @@
 package com.example.omegar;
 
 import android.content.Intent;
+import android.content.res.AssetManager;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
@@ -14,7 +15,18 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.omegar.NonActivityClasses.Meal;
+import com.example.omegar.NonActivityClasses.food;
 import com.example.omegar.NonActivityClasses.foodArray;
+import com.google.gson.Gson;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.ArrayList;
+
+import static android.icu.lang.UCharacter.GraphemeClusterBreak.T;
 
 
 public class MealInput2 extends AppCompatActivity {
@@ -28,6 +40,26 @@ public class MealInput2 extends AppCompatActivity {
         final AutoCompleteTextView foodNameInput = findViewById(R.id.autoCompleteTextView2);
         // Get the string array
         String[] countries = getResources().getStringArray(R.array.meal_names);
+        final ArrayList<food> converted;
+try {
+    InputStream input = getAssets().open("nutrient_database/food_api.json");
+    int size = input.available();
+    byte[] buffer = new byte[size];
+    input.read();
+    input.close();
+
+    String unconverted = new String(buffer,"UTF-8");
+
+
+    JSONArray jarray = new JSONArray(unconverted);
+    converted = new Gson().fromJson(jarray.toString(), ArrayList.class);
+}catch(IOException e){
+    e.printStackTrace();
+} catch (JSONException e) {
+    e.printStackTrace();
+}
+
+
         // Create the adapter and set it to the AutoCompleteTextView
         ArrayAdapter<String> adapter =
                 new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, countries);
@@ -47,9 +79,6 @@ public class MealInput2 extends AppCompatActivity {
                 */
 
                 double amount = Double.parseDouble(foodWeightInput.getText().toString());
-
-                foodArray foodarray = new foodArray();
-
 
                 switch(foodNameInput.getText().toString().toUpperCase()){
                     case "FRENCH FRIES":
