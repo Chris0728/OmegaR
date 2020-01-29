@@ -18,6 +18,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.omegar.NonActivityClasses.AutocompleteFoodAdapter;
+import com.example.omegar.NonActivityClasses.GlobalClass;
 import com.example.omegar.NonActivityClasses.Meal;
 import com.example.omegar.NonActivityClasses.food;
 
@@ -34,12 +35,14 @@ import static android.icu.lang.UCharacter.GraphemeClusterBreak.T;
 
 
 public class MealInput2 extends AppCompatActivity {
-
+    GlobalClass gloClass;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_meal_input2);
 
+
+        gloClass = (GlobalClass)getApplication();
         // Get a reference to the AutoCompleteTextView in the layout
         final AutoCompleteTextView foodNameInput = findViewById(R.id.autoCompleteTextView2);
         // Get the string array
@@ -113,7 +116,7 @@ public class MealInput2 extends AppCompatActivity {
 
                 switch(foodNameInput.getText().toString()){
                     case "Chicken, broiler, giblets, raw":
-                        meal = new Meal("Chicken, broiler, giblets, raw", 1, 10, amount);
+                        meal = new Meal("Chicken, broiler, giblets, raw", 2, 10, amount);
                         valid = true;
                         /*
                         mealName = "Chicken, broiler, giblets, raw";
@@ -131,7 +134,7 @@ public class MealInput2 extends AppCompatActivity {
                          */
                         break;
                     case "Chicken, broiler, giblets, simmered":
-                        meal = new Meal("Chicken, broiler, giblets, simmered", 10, 1, amount);
+                        meal = new Meal("Chicken, broiler, giblets, simmered", 2, 16, amount);
                         valid = true;
                         /*
                         mealName = "Chicken, broiler, giblets, simmered";
@@ -147,10 +150,10 @@ public class MealInput2 extends AppCompatActivity {
                 }}
                 //if user entered both meal and weight, pass the data to another activity
                 if(valid) {
-                    Homepage.meals.addMeal(meal);
+                    gloClass.setMeals(meal);
                     Intent mealIntent = new Intent(getBaseContext(), Homepage.class);
 
-                    mealIntent.putExtra("MEAL", meal);
+                    //mealIntent.putExtra("MEAL", meal);
                 /*
                 mealIntent.putExtra("MEAL_NAME", mealName);
                 mealIntent.putExtra("OMEGA_3", omega3);
