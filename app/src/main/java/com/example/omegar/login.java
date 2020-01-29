@@ -70,6 +70,8 @@ public class login extends AppCompatActivity {
                 Intent intent = new Intent(getBaseContext(), Homepage.class);
                 try {
                     gloClass.getUserByEmail("testEmail@testEmail.com"); //this sets all user's info to match DB's user info.
+
+                    
                     /*
                     Im hardcoding the email rn because
                     there's an error with getting the String representation from
@@ -78,13 +80,13 @@ public class login extends AppCompatActivity {
 
                     intent = new Intent(getBaseContext(), Homepage.class);
                     //checking if email TxtField matches DB email.
-                    if ("testEmail@testEmail.com".equals(gloClass.getEmail()/*((GlobalClass) new GlobalClass()).getEmail()*/)) {
+                            //if ("testEmail@testEmail.com".equals(gloClass.getEmail()/*((GlobalClass) new GlobalClass()).getEmail()*/)) {
                         /*intent.putExtra("id", gloClass.getId());
                         intent.putExtra("email", gloClass.getEmail());
                         intent.putExtra("pass", gloClass.getPass());
                         intent.putExtra("age", gloClass.getAge());*/
                         startActivity(intent);
-                    }
+                            //}
 
 
                 }catch(Exception e){

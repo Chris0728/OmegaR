@@ -80,7 +80,8 @@ android:background="@drawable/background"
         android:inputType="textPersonName"
         android:paddingLeft="40dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        />
 
     <ImageView
         android:id="@+id/imageView6"

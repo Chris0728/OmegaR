@@ -33,9 +33,8 @@ public class MealData {
     public double geto6(){
       return saveo6;
     }
-    public int getSize(){
-        return meals.size();
-    }
+    public int getSize(){return meals.size();}
+
 
 
 }
