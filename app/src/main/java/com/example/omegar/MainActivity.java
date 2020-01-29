@@ -29,10 +29,10 @@ public class MainActivity extends AppCompatActivity {
 
 
         TextView re = findViewById(R.id.welcomeText);
-        re.setText(sql);
+        //re.setText(sql);
 
 
-        Toast.makeText(MainActivity.this,sql,Toast.LENGTH_LONG).show();
+        //Toast.makeText(MainActivity.this,sql,Toast.LENGTH_LONG).show();
 
 
         Button starter = findViewById(R.id.button);

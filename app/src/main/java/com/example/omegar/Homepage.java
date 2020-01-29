@@ -40,19 +40,19 @@ public class Homepage extends AppCompatActivity {
         yellowCircle = findViewById(R.id.yellowCircle);
         greenCircle = findViewById(R.id.greenCircle);
 
-        if(meals.getSize()==0)
+        if(glo.getMeals().getSize()==0)
         {ratioDisplay.setText("Please enter a meal");}
         else {
-            ratioDisplay.setText(meals.calculate());
+            ratioDisplay.setText(glo.getMeals().calculate());
         }
         int range=0;
-        if(meals.geto6()<=4){
+        if(glo.getMeals().geto6()<=4){
             range = 1;
         }
-        if(meals.geto6()>4 && meals.geto6()<=10){
+        if(glo.getMeals().geto6()>4 && glo.getMeals().geto6()<=10){
             range =2;
         }
-        if(meals.geto6()>10){
+        if(glo.getMeals().geto6()>10){
             range = 3;
         }
         switch(range){
