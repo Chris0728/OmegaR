@@ -20,9 +20,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.omegar.NonActivityClasses.AutocompleteFoodAdapter;
 import com.example.omegar.NonActivityClasses.Meal;
 import com.example.omegar.NonActivityClasses.food;
-import com.example.omegar.NonActivityClasses.foodArray;
-import com.google.android.material.tabs.TabLayout;
-import com.google.gson.Gson;
+
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -46,26 +44,35 @@ public class MealInput2 extends AppCompatActivity {
         final AutoCompleteTextView foodNameInput = findViewById(R.id.autoCompleteTextView2);
         // Get the string array
 
-        String[] countries = getResources().getStringArray(R.array.meal_names);
+        //String[] countries = getResources().getStringArray(R.array.meal_names);
         ArrayList<food> converted = new ArrayList<>();
         String error = "";
     try {
+        //In this try clause, read and parse JSON file "food_api.json" to fill up the autocomplete textView
+        //create an assetManager object to get access to "assets" folder in the app
         AssetManager assetManager = this.getAssets();
+        //open up an input stream for "food_api.json"
         InputStream input = assetManager.open("nutrient_database/food_api.json");
         int size = input.available();
         byte[] buffer = new byte[size];
         input.read(buffer);
         input.close();
 
+        //converting the unparsed bytes into a string
         String unconverted = new String(buffer,"utf-8");
 
+        //create JSONarray with the unparsed string
         JSONArray jarray = new JSONArray(unconverted);
 
+        //extracting JSONObject from JSONArray
         for(int i =0; i < jarray.length();i++){
            JSONObject obj = jarray.getJSONObject(i);
+           //get the value of food_code and foodd_escription
             String code = obj.getString("food_code");
             String description = obj.getString("food_description");
+            //store the data into a food object/model
             food foodI = new food(code, description);
+            //add the food into an arraylist
             converted.add(foodI);
         }
     }catch(IOException e){
@@ -91,17 +98,23 @@ public class MealInput2 extends AppCompatActivity {
             public void onClick(View v) {
                 //For Demo Only
                 Meal meal = null;
-
+                boolean valid = false;
+                double amount;
                 /*
                 String mealName = "";
                 double omega3 = 0, omega6 = 0;
                 */
 
-                double amount = Double.parseDouble(foodWeightInput.getText().toString());
+                //Convert the user input into string
+                String amountText = foodWeightInput.getText().toString();
+                //if user entered something for food weight, do the following
+                if(!amountText.equals("")){
+                amount = Double.parseDouble(amountText);
 
                 switch(foodNameInput.getText().toString()){
                     case "Chicken, broiler, giblets, raw":
                         meal = new Meal("Chicken, broiler, giblets, raw", 1, 10, amount);
+                        valid = true;
                         /*
                         mealName = "Chicken, broiler, giblets, raw";
                         omega3 = 1;
@@ -110,6 +123,7 @@ public class MealInput2 extends AppCompatActivity {
                         break;
                     case "Chicken, broiler, giblets, flour coated, fried":
                         meal = new Meal("Chicken, broiler, giblets, flour coated, fried", 3, 40, amount);
+                        valid = true;
                         /*
                         mealName = "Chicken, broiler, giblets, flour coated, fried";
                         omega3 = 3;
@@ -118,6 +132,7 @@ public class MealInput2 extends AppCompatActivity {
                         break;
                     case "Chicken, broiler, giblets, simmered":
                         meal = new Meal("Chicken, broiler, giblets, simmered", 10, 1, amount);
+                        valid = true;
                         /*
                         mealName = "Chicken, broiler, giblets, simmered";
                         omega3 = 10;
@@ -125,13 +140,17 @@ public class MealInput2 extends AppCompatActivity {
                          */
                         break;
                     default:
+                        //if user entered food weight but not the meal, make a reminder toast message
+                        Toast.makeText(MealInput2.this,"Please input your meal",Toast.LENGTH_SHORT).show();
                         break;
 
-                }
-                Homepage.meals.addMeal(meal);
-                Intent mealIntent = new Intent(getBaseContext(), Homepage.class);
+                }}
+                //if user entered both meal and weight, pass the data to another activity
+                if(valid) {
+                    Homepage.meals.addMeal(meal);
+                    Intent mealIntent = new Intent(getBaseContext(), Homepage.class);
 
-                mealIntent.putExtra("MEAL", meal);
+                    mealIntent.putExtra("MEAL", meal);
                 /*
                 mealIntent.putExtra("MEAL_NAME", mealName);
                 mealIntent.putExtra("OMEGA_3", omega3);
@@ -139,8 +158,11 @@ public class MealInput2 extends AppCompatActivity {
                 mealIntent.putExtra("AMOUNT", amount);
                 */
 
-                startActivity(mealIntent);
-
+                    startActivity(mealIntent);
+                }
+                //else make a reminder toast message
+                else
+                    Toast.makeText(MealInput2.this,"Please input the weight",Toast.LENGTH_SHORT).show();
             }
         });
 
