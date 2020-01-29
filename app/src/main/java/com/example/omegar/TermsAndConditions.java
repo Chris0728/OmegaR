@@ -20,12 +20,6 @@ public class TermsAndConditions extends AppCompatActivity {
         setContentView(R.layout.activity_terms_and_conditions);
 
 
-        DBConnector m = new DBConnector();
-        String sql = m.connectThenSelect();
-
-        termsContent = findViewById(R.id.termsContent);
-        termsContent.setText(sql);
-
         backBtn = findViewById(R.id.back);
         backBtn.setOnClickListener(new View.OnClickListener() {
 
