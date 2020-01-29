@@ -29,6 +29,7 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
 import static android.icu.lang.UCharacter.GraphemeClusterBreak.T;
@@ -62,15 +63,15 @@ public class MealInput2 extends AppCompatActivity {
         input.close();
 
         //converting the unparsed bytes into a string
-        String unconverted = new String(buffer,"utf-8");
+        String unconverted = new String(buffer, "utf-8");
 
-        //create JSONarray with the unparsed string
+        //create JSON array with the unparsed string
         JSONArray jarray = new JSONArray(unconverted);
 
         //extracting JSONObject from JSONArray
         for(int i =0; i < jarray.length();i++){
            JSONObject obj = jarray.getJSONObject(i);
-           //get the value of food_code and foodd_escription
+           //get the value of food_code and food_description
             String code = obj.getString("food_code");
             String description = obj.getString("food_description");
             //store the data into a food object/model
