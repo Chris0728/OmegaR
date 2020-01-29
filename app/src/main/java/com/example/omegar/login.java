@@ -19,34 +19,66 @@ import android.widget.TextView;
 import android.widget.Toast;
 import com.example.omegar.NonActivityClasses.GlobalClass;
 
-public class login extends AppCompatActivity {
+import org.w3c.dom.Text;
 
-    @Override
+public class login extends AppCompatActivity {
+    Button login;
+    TextView txtEmail;
+    TextView txtPass;
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
 
-        Button login = findViewById(R.id.loginbtn);
+        login = findViewById(R.id.loginbtn);
+        txtEmail = findViewById(R.id.userEmail);
+        txtPass = findViewById(R.id.userPassword);
+
+
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                GlobalClass gloClass = (GlobalClass) getApplication();
 
-                //method below loads userProfile from DB, provided that the email and account exists.
-                //Also sets gloClass private vals to DB results. Doing this will allow any activity to access
-                //this user's user-profile.
+                    String emailCheckWithDB = txtEmail.getText().toString().trim(); //trim removes whitespaces
+                    String passCheckWithDB = txtPass.getText().toString().trim(); //whitespaces not allowed in password
+
+                    try {
+                        if ("".equals(emailCheckWithDB) || "".equals(passCheckWithDB)) {
+                            Toast.makeText(login.this, "Invalid email or empty password.", Toast.LENGTH_LONG).show();
+                            return;
+                        }
+
+                        if (!gloClass.emailExists(emailCheckWithDB)) {
+                            Toast.makeText(login.this, "Cannot find email!", Toast.LENGTH_LONG).show();
+                            return;
+                        }
+                        if (!gloClass.pwMatch(emailCheckWithDB, passCheckWithDB)) {
+                            Toast.makeText(login.this, "Incorrect password.", Toast.LENGTH_LONG).show();
+                            return;
+                        }
+                    /*if (gloClass.emailExists(emailCheckWithDB)) {
+                        Toast.makeText(login.this, "Cannot find email!", Toast.LENGTH_LONG).show();
+                        return;
+                    }*/
+                    } catch (Exception e) {
+                        Toast.makeText(login.this, e.toString(), Toast.LENGTH_LONG).show();
+                    }
+
+                Intent intent = new Intent(getBaseContext(), Homepage.class);
                 try {
-                    //GlobalClass gloClass = new GlobalClass();
-                            //GlobalClass gloClass = (GlobalClass) getApplication();
-                            //gloClass.getUserByEmail("testEmail@testEmail.com"); //this sets all user's info to match DB's user info.
+                    gloClass.getUserByEmail("testEmail@testEmail.com"); //this sets all user's info to match DB's user info.
+
+                    
                     /*
                     Im hardcoding the email rn because
                     there's an error with getting the String representation from
                     textView.
                     */
 
-                    Intent intent = new Intent(getBaseContext(), Homepage.class);
+                    intent = new Intent(getBaseContext(), Homepage.class);
                     //checking if email TxtField matches DB email.
                             //if ("testEmail@testEmail.com".equals(gloClass.getEmail()/*((GlobalClass) new GlobalClass()).getEmail()*/)) {
                         /*intent.putExtra("id", gloClass.getId());
@@ -61,8 +93,8 @@ public class login extends AppCompatActivity {
                     Log.e("Login & gloClass failed", Log.getStackTraceString(e));
                     Toast.makeText(login.this,e.toString(),Toast.LENGTH_LONG).show();
                 }
-                /*Intent intent = new Intent(getBaseContext(), Homepage.class);
-                startActivity(intent);*/
+
+                startActivity(intent);// why needed here?
             }
         });
         TextView signup = findViewById(R.id.signUp);
@@ -74,7 +106,6 @@ public class login extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
          */
         String SignUp = "Sign Up";
         SpannableString signupspan = new SpannableString(SignUp);

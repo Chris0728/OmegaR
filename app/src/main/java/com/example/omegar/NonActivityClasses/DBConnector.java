@@ -113,7 +113,7 @@ public class DBConnector {
             s[5] = rst.getString("chronicDisease");
             s[6] = rst.getString("gender");
             s[7] = rst.getString("weight");
-
+            con.close();
         }catch(Exception e){
             Log.e("DB con", Log.getStackTraceString(e));
         }
@@ -128,10 +128,33 @@ public class DBConnector {
         return select("*","userProfile WHERE uEmail='" + email + "'");
     }
 
+    private String selectUserPassword(String pass){
+        return select("upass","userProfile WHERE upass='" + pass + "'");
+    }
+
     String insert(String relation, String values) {
         return "INSERT INTO " + relation + " VALUES " + values + ";";
     }
 
+    public Boolean emailExists(String email) throws SQLException{
+        String s = selectUserByEmail(email);
+        Connection con = DriverManager.getConnection(url,user,pw);
+        Statement st = con.createStatement();
+        ResultSet rst = st.executeQuery(s);
+        con.close();
+        return rst.isBeforeFirst();
+    }
 
+    public Boolean pwMatch(String email, String password) throws SQLException{
+        String s = selectUserByEmail(email);
+        Connection con = DriverManager.getConnection(url,user,pw);
+        Statement st = con.createStatement();
+        ResultSet rst = st.executeQuery(s);
+        con.close();
+        if(!rst.isBeforeFirst()){return false;}
+        //logic is shaky below
+        rst.next();
+        return password.equals(rst.getString("upass").trim());
+    }
 
 }

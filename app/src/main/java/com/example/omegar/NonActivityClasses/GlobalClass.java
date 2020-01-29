@@ -23,6 +23,8 @@ public class GlobalClass extends Application {
     private String disease;
     private String bp;
     private String gender;
+
+    DBConnector dbC;
     private MealData meals;
     //Constructor
     //public so that login.java can make this obj.
@@ -32,7 +34,7 @@ public class GlobalClass extends Application {
     }
 
     public GlobalClass(String name, String email, String pass, String age) {
-        DBConnector dbC = new DBConnector();
+        dbC = new DBConnector();
         setName(name);
         setEmail(email);
         //should password be here?
@@ -121,6 +123,13 @@ public class GlobalClass extends Application {
     }
     public void setMeals(Meal meal){meals.addMeal(meal);return;}
     /*End of Getter and Setter methods*/
+    public Boolean emailExists(String email) throws SQLException{
+        return dbC.emailExists(email);
+    }
+
+    public Boolean pwMatch(String email, String password) throws Exception{
+        return dbC.pwMatch(email, password);
+    }
 
 
 }
