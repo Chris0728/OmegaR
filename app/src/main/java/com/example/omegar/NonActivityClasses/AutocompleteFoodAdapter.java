@@ -56,11 +56,16 @@ public class AutocompleteFoodAdapter extends ArrayAdapter<food> {
                 suggestions.addAll(foodListInFull);
             }else{
                 String filterPattern = constraint.toString().toLowerCase().trim();
-                for(food i : foodListInFull ){
-                    if(i.getFood_description().toLowerCase().contains(filterPattern)){
+                int counts = 0;
+                for(food i : foodListInFull ) {
+                    if (i.getFood_description().toLowerCase().contains(filterPattern)) {
                         suggestions.add(i);
+                        counts++;
+                        if(counts>=5)break;
                     }
                 }
+
+
             }
             results.values = suggestions;
             results.count = suggestions.size();
