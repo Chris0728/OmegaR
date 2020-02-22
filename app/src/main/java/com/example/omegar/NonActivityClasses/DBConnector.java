@@ -48,7 +48,7 @@ public class DBConnector {
 
             s = s + "Connection sucessful.\n";
             Statement st = con.createStatement();
-            ResultSet rst = st.executeQuery(myDB.select("*","dept WHERE dno<'20' LIMIT '10'"));
+            ResultSet rst = st.executeQuery(myDB.select("*","dept"));
 
 
             s += ">>>Printing result set.\n";
@@ -77,11 +77,11 @@ public class DBConnector {
         try {
             Connection con = DriverManager.getConnection(url,user,pw);
             Statement st = con.createStatement();
-            ResultSet rst = st.executeQuery("SELECT * FROM dept WHERE dno='1';");
+            ResultSet rst = st.executeQuery("SELECT * FROM dept;");
 
             rst.next();
-            aa = rst.getString("dno") + "        " +
-                 rst.getString("dname") + "      " +
+            aa = rst.getString("uid") + "        " +
+                 rst.getString("uemail") + "      " +
                  rst.getString("age");
 
         }catch(SQLException e){
@@ -90,6 +90,15 @@ public class DBConnector {
 
         return aa;
     }
+    /*public boolean isConnected(){
+        try{
+            Connection con = DriverManager.getConnection(url,user,pw);
+            Statement
+        } catch (SQLException e) {
+
+        }
+        return false;
+    }*/
 
     /*
     This method currently will get userProfile's values

@@ -64,12 +64,12 @@ public class login extends AppCompatActivity {
                         return;
                     }*/
                     } catch (Exception e) {
-                        Toast.makeText(login.this, e.toString(), Toast.LENGTH_LONG).show();
+                        Toast.makeText(login.this, /*e.toString()*/"LINE 67", Toast.LENGTH_LONG).show();
                     }
 
                 Intent intent = new Intent(getBaseContext(), Homepage.class);
                 try {
-                    gloClass.getUserByEmail("testEmail@testEmail.com"); //this sets all user's info to match DB's user info.
+                    gloClass.getUserByEmail(emailCheckWithDB); //this sets all user's info to match DB's user info.
 
                     
                     /*
