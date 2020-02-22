@@ -24,13 +24,20 @@ public class GlobalClass extends Application {
     private String bp;
     private String gender;
 
-    DBConnector dbC;
+    DBConnector dbC = new DBConnector();
     private MealData meals;
     //Constructor
     //public so that login.java can make this obj.
     public GlobalClass() {
-        DBConnector dbC = new DBConnector();
         meals = new MealData();
+        setId("");
+        setEmail("");
+        setPass(""); //delete pass?
+        setAge("");
+        setBp("");
+        setDisease("");
+        setGender("");
+        setWeight("");
     }
 
     public GlobalClass(String name, String email, String pass, String age) {

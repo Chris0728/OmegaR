@@ -134,7 +134,7 @@ public class DBConnector {
     }
 
     String selectUserByEmail(String email){
-        return select("*","userProfile WHERE uEmail='" + email + "'");
+        return select("*","userProfile WHERE uemail='" + email + "'");
     }
 
     private String selectUserPassword(String pass){
@@ -146,12 +146,22 @@ public class DBConnector {
     }
 
     public Boolean emailExists(String email) throws SQLException{
-        String s = selectUserByEmail(email);
+        /*String s = selectUserByEmail(email);
         Connection con = DriverManager.getConnection(url,user,pw);
         Statement st = con.createStatement();
         ResultSet rst = st.executeQuery(s);
         con.close();
-        return rst.isBeforeFirst();
+        rst.next();
+        return rst.isBeforeFirst();*/
+
+
+        String s = selectUserByEmail(email);
+        Connection con = DriverManager.getConnection(url,user,pw);
+        Statement st = con.createStatement();
+        ResultSet rst = st.executeQuery(s);
+        boolean ha = rst.next();
+        con.close();
+        return ha;
     }
 
     public Boolean pwMatch(String email, String password) throws SQLException{

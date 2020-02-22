@@ -122,6 +122,8 @@ public class Homepage extends AppCompatActivity {
                         break;
                     case R.id.nav_logout:
                         Toast.makeText(Homepage.this, "Logout",Toast.LENGTH_SHORT).show();
+                        Intent intentLogout = new Intent(getBaseContext(), MainActivity.class);
+                        startActivity(intentLogout);
                         dl.closeDrawer(nv);
                         break;
                     default:
@@ -186,6 +188,10 @@ public class Homepage extends AppCompatActivity {
             return true;
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void onBackPressed(){
+
     }
 
 }

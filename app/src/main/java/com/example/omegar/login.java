@@ -21,7 +21,9 @@ import com.example.omegar.NonActivityClasses.GlobalClass;
 
 import org.w3c.dom.Text;
 
-public class login extends AppCompatActivity {
+import java.sql.SQLException;
+
+public class login extends AppCompatActivity{
     Button login;
     TextView txtEmail;
     TextView txtPass;
@@ -32,8 +34,8 @@ public class login extends AppCompatActivity {
 
 
         login = findViewById(R.id.loginbtn);
-        txtEmail = findViewById(R.id.userEmail);
-        txtPass = findViewById(R.id.userPassword);
+        txtEmail =  findViewById(R.id.userEmail);
+        txtPass =  findViewById(R.id.userPassword);
 
 
 
@@ -63,8 +65,11 @@ public class login extends AppCompatActivity {
                         Toast.makeText(login.this, "Cannot find email!", Toast.LENGTH_LONG).show();
                         return;
                     }*/
-                    } catch (Exception e) {
-                        Toast.makeText(login.this, /*e.toString()*/"LINE 67", Toast.LENGTH_LONG).show();
+                    } catch(SQLException e){
+                        Toast.makeText(login.this, e.toString(), Toast.LENGTH_LONG).show();
+                    }
+                    catch (Exception e) {
+                        Toast.makeText(login.this, emailCheckWithDB, Toast.LENGTH_LONG).show();
                     }
 
                 Intent intent = new Intent(getBaseContext(), Homepage.class);
