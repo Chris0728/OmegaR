@@ -75,7 +75,7 @@ public class Register extends AppCompatActivity {
                 intent.putExtra("Phone",phone.getText().toString());
                 intent.putExtra("Pwd",pwd.getText().toString());
                 startActivity(intent);
-                 */
+                */
             }
 
         });
