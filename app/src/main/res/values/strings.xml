@@ -24,9 +24,10 @@
     <string name="enter_weight_in_grams">Enter weight in grams (at least 100g)</string>
     <string name="x">X</string>
     <string name="Back">Back</string>
+    <string name="Welcome_Back">Welcome back</string>
     <string name="Login">Login</string>
     <string name="signup">Sign up</string>
-    <string name="dontHaveAccount">Do not have an account?</string>
+    <string name="dontHaveAccount">Not registered?</string>
     <string name="input_meal">INPUT MEAL</string>
     <string name="omega_3">OMEGA 3</string>
     <string name="omega_6">OMEGA 6</string>

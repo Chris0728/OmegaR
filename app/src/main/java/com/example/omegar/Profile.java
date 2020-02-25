@@ -28,15 +28,17 @@ public class Profile extends AppCompatActivity {
         String pwd = profileIntent.getStringExtra("Pwd");*/
 
         TextView userName = findViewById(R.id.profileName);
+        userName.setVisibility(View.INVISIBLE);
+
         TextView userEmail = findViewById(R.id.profileEmail);//using profilePhone textView to display password for now.
         TextView userAge = findViewById(R.id.profileAge);
         TextView userWeight = findViewById(R.id.profileWeight);
         TextView userDisease = findViewById(R.id.profileDisease);
         TextView userGender = findViewById(R.id.profileGender);
 
-        GlobalClass gloClass = (GlobalClass) getApplication();
+        final GlobalClass gloClass = (GlobalClass) getApplication();
 
-        userName.setText(gloClass.getId());
+        //userName.setText(gloClass.getId());
         userEmail.setText(gloClass.getEmail());
         userAge.setText(gloClass.getAge());
         userWeight.setText(gloClass.getWeight());

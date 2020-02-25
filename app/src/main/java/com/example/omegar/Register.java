@@ -16,6 +16,10 @@ import android.widget.CheckedTextView;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.omegar.NonActivityClasses.GlobalClass;
+
+import java.sql.SQLException;
+
 public class Register extends AppCompatActivity {
 
     @Override
@@ -67,6 +71,7 @@ public class Register extends AppCompatActivity {
                 String pwd = pwdField.getText().toString().trim();
                 String pwdConf = pwdConfField.getText().toString().trim();
 
+
                 //Name
                 if(name.isEmpty())
                     validFields[0] = false;
@@ -111,14 +116,30 @@ public class Register extends AppCompatActivity {
                 }
 
 
-                /*
+                final GlobalClass gloClass = (GlobalClass) getApplication();
+                try {
+                    //if-statement below checks if email is already registered on DB.
+                    if (gloClass.emailExists(email)) {
+                        Toast.makeText(Register.this, "Email is already registered. Try different email!", Toast.LENGTH_LONG).show();
+                        return;
+                    }
+
+                    //register user on DB.
+                    gloClass.signUserUp(name, email, pwd);
+
+                    //save user info locally on the APP inside gloClass.
+                    gloClass.logonAtRegister(name, email);
+
+
+                } catch(SQLException e){
+                    Toast.makeText(Register.this, e.toString(), Toast.LENGTH_LONG).show();
+                }
+                catch (Exception e) {
+                    Toast.makeText(Register.this, e.toString(), Toast.LENGTH_LONG).show();
+                }
+
                 Intent intent = new Intent(getBaseContext(), Homepage.class);
-                intent.putExtra("Name",name.getText().toString());
-                intent.putExtra("Email",email.getText().toString());
-                intent.putExtra("Phone",phone.getText().toString());
-                intent.putExtra("Pwd",pwd.getText().toString());
                 startActivity(intent);
-                */
             }
 
         });

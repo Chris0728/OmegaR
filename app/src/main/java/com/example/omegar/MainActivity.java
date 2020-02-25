@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.res.AssetManager;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.os.StrictMode;
 import android.view.View;
 import android.widget.Button;
@@ -35,15 +36,27 @@ public class MainActivity extends AppCompatActivity {
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
 
+
+        //need to replace below with GloClass implementation of isOnline();
         DBConnector m = new DBConnector();
+        if(m.isOnline()){
+            new CountDownTimer(5000, 1000) {
+                public void onTick(long millisUntilFinished) {
+                    // do something after 1s
+                }
+                public void onFinish() {
+                    // do something end times 5s
+                }
+            }.start();
+            Toast.makeText(MainActivity.this, "Online services loaded.", Toast.LENGTH_LONG).show();
+        }
         //String sql = m.connectThenSelect();
 
 
-        TextView re = findViewById(R.id.welcomeText);
-        //re.setText(sql);
+        TextView welcomeTextField = findViewById(R.id.welcomeText);
+        welcomeTextField.setVisibility(View.GONE);
 
-        //Toast.makeText(MainActivity.this,sql,Toast.LENGTH_LONG).show();
-        //re.setText(sql);
+
         Button starter = findViewById(R.id.button);
         if(!gloClass.isLoadNutrient()) {
             try {

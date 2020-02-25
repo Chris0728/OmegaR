@@ -71,6 +71,12 @@ public class GlobalClass extends Application {
         setGender("");
         setWeight("");
     }
+
+    public void logonAtRegister(String name, String email){
+        setName(name);
+        setEmail(email);
+    }
+
     public void getUserByEmail(String email) {
         String[] temp = (new DBConnector()).dbGetUserByEmail(email);
         if (temp.length == 0) {
@@ -163,5 +169,8 @@ public class GlobalClass extends Application {
         return dbC.pwMatch(email, password);
     }
 
+    public void signUserUp(String name, String email, String pwd) throws SQLException{
+        dbC.signUserUp(name, email, pwd);
+    }
 
 }

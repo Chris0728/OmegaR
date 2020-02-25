@@ -176,4 +176,23 @@ public class DBConnector {
         return password.equals(rst.getString("upass").trim());
     }
 
+    public void signUserUp(String name, String email, String pwd) throws SQLException{
+        //name is not defined in userProfile relation on AWS DB. Therefore, it is not used here.
+        String s = insert("userProfile (uemail,upass) ", "('" + email + "','" + pwd + "')");
+        Connection con = DriverManager.getConnection(url,user,pw);
+        Statement st = con.createStatement();
+        st.executeUpdate(s);
+        con.close();
+    }
+
+    public boolean isOnline(){
+        boolean truth = false;
+        try {
+            Connection con = DriverManager.getConnection(url, user, pw);
+            truth = true;
+        } catch (SQLException e){
+
+        }
+        return truth;
+    }
 }
