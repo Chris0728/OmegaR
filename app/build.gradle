@@ -33,7 +33,11 @@ dependencies {
     implementation group:'com.jjoe64', name:'graphview',version:'4.2.2'
     //Using Gson for parsing NCFs.
     implementation 'com.google.code.gson:gson:2.8.6'
+    //Layout used in the Education page
+    implementation 'androidx.cardview:cardview:1.0.0'
 
+
+    //testing Implementation
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0'
