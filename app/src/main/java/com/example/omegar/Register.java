@@ -86,7 +86,7 @@ public class Register extends AppCompatActivity {
                     validFields[2] = true;
 
                 //PwdConf
-                if(name.isEmpty() || !pwdConf.equals(pwd))
+                if(pwdConf.isEmpty() || !pwdConf.equals(pwd))
                     validFields[3] = false;
                 else
                     validFields[3] = true;
