@@ -121,13 +121,27 @@ public class MealInput2 extends AppCompatActivity {
                 //Convert the user input into string
                 String amountText = foodWeightInput.getText().toString();
                 String foodAte = foodNameInput.getText().toString();
+                if(Double.parseDouble(amountText.toString())<100){
+                    Toast.makeText(MealInput2.this,"Please input more than 100g",Toast.LENGTH_LONG).show();
+                    return;
+                }
                 double n3amount = 0;
                 double n6amount = 0;
 
                 //if user entered something for both textViews, do the following
                 if(!amountText.equals("")&&!foodAte.equals("")){
                 amount = Double.parseDouble(amountText);
-                try {
+                for(Meal_nutrient i : gloClass.getNutrients()){
+                    if(i.food_code.equals(converted.getFoodCode(foodAte))){
+                        if(i.nutrient_name_id.equals("868")){
+                            n3amount += (Double.parseDouble(i.nutrient_value) * amount / 100);
+                        }
+                        if(i.nutrient_name_id.equals("869")){
+                            n6amount += (Double.parseDouble((i.nutrient_value)) * amount / 100);
+                        }
+                    }
+                }
+                /*try {
                     AssetManager assetManager = MealInput2.this.getAssets();
                     com.google.gson.stream.JsonReader jsonReader = new com.google.gson.stream.JsonReader(new InputStreamReader(assetManager.open("nutrient_database/nutrient_amount_api.json")));
 
@@ -148,13 +162,15 @@ public class MealInput2 extends AppCompatActivity {
                         }
                         if(count==2)break;
 
+
                     }
-                    jsonReader.close();
+                    jsonReader.close();*/
                     //add a new meal
+                    Toast.makeText(MealInput2.this,"N3: "+n3amount+ "\n N6: " + n6amount,Toast.LENGTH_LONG).show();
                     meal = new Meal(foodAte,n3amount,n6amount,amount);
                     valid = true;
 
-                }catch (UnsupportedEncodingException e){
+                /*}catch (UnsupportedEncodingException e){
                     Toast.makeText(MealInput2.this,e.toString(),Toast.LENGTH_SHORT).show();
                 }
                 catch (FileNotFoundException e){
@@ -162,7 +178,7 @@ public class MealInput2 extends AppCompatActivity {
                 }
                 catch (IOException e){
                     Toast.makeText(MealInput2.this,e.toString(),Toast.LENGTH_SHORT).show();
-                }
+                }*/
                 //The code below is just for testing
                 /*switch(foodNameInput.getText().toString()){
                     case "Chicken, broiler, giblets, raw":

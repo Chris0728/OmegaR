@@ -4,6 +4,7 @@ import android.app.Application;
 import android.util.Log;
 
 import java.sql.*; //not needed i think
+import java.util.ArrayList;
 
     /*
     OK this is very very very very bad.
@@ -23,6 +24,9 @@ public class GlobalClass extends Application {
     private String disease;
     private String bp;
     private String gender;
+    private boolean loadNutrient = false; //if nutrients_amount.json is loaded once, this would be true and no need to load again
+
+    ArrayList<Meal_nutrient> nutrients = new ArrayList<>();
 
     DBConnector dbC = new DBConnector();
     private MealData meals;
@@ -115,7 +119,13 @@ public class GlobalClass extends Application {
     public String getGender() {
         return gender;
     }
+    public boolean isLoadNutrient(){return loadNutrient;}
     public MealData getMeals(){return meals;}
+
+    public ArrayList<Meal_nutrient> getNutrients() {
+        return nutrients;
+    }
+    public void setLoadNutrient(boolean f){ loadNutrient = f; }
     public void setWeight(String weight) {
         this.weight = weight;
     }
@@ -128,10 +138,14 @@ public class GlobalClass extends Application {
     public void setGender(String gender) {
         this.gender = gender;
     }
-    public void setMeals(Meal meal){meals.addMeal(meal);return;}
+    public void setMeals(Meal meal){meals.addMeal(meal);}
     /*End of Getter and Setter methods*/
     public Boolean emailExists(String email) throws SQLException{
         return dbC.emailExists(email);
+    }
+
+    public void addNutrients(Meal_nutrient nutrient) {
+        nutrients.add(nutrient);
     }
 
     public Boolean pwMatch(String email, String password) throws Exception{
