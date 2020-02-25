@@ -21,12 +21,12 @@ public class Profile extends AppCompatActivity {
 
         Button backbtn = findViewById(R.id.back);
 
-        /*Intent profileIntent = getIntent();
-        String name = profileIntent.getStringExtra("Name");
+        Intent profileIntent = getIntent();
+        /*String name = profileIntent.getStringExtra("Name");
         String email = profileIntent.getStringExtra("Email");
         String phone = profileIntent.getStringExtra("Phone");
-        String pwd = profileIntent.getStringExtra("Pwd");
-*/
+        String pwd = profileIntent.getStringExtra("Pwd");*/
+
         TextView userName = findViewById(R.id.profileName);
         TextView userEmail = findViewById(R.id.profileEmail);//using profilePhone textView to display password for now.
         TextView userAge = findViewById(R.id.profileAge);
