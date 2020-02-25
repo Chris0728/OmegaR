@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AutocompleteFoodAdapter extends ArrayAdapter<food> {
+    //ArrayAdapter to display suggestions for autocomplete view for inputting meal
     private List<food> foodListInFull;
 
     public AutocompleteFoodAdapter(@NonNull Context context, @NonNull List<food> foodList) {
@@ -56,10 +57,14 @@ public class AutocompleteFoodAdapter extends ArrayAdapter<food> {
                 suggestions.addAll(foodListInFull);
             }else{
                 String filterPattern = constraint.toString().toLowerCase().trim();
-                for(food i : foodListInFull ){
+                int count = 0;
+                for(food i : foodListInFull){
                     if(i.getFood_description().toLowerCase().contains(filterPattern)){
                         suggestions.add(i);
+                        count++;
                     }
+                    if(count > 5)
+                        break;
                 }
             }
             results.values = suggestions;

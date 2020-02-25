@@ -3,6 +3,7 @@ package com.example.omegar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.res.AssetManager;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.view.View;
@@ -12,7 +13,16 @@ import android.widget.Toast;
 
 import com.example.omegar.NonActivityClasses.DBConnector;
 
+import com.example.omegar.NonActivityClasses.GlobalClass;
+import com.example.omegar.NonActivityClasses.Meal_nutrient;
 import com.example.omegar.NonActivityClasses.foodArray;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -21,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        GlobalClass gloClass = (GlobalClass) getApplication();
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
 
@@ -34,6 +45,28 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(MainActivity.this,sql,Toast.LENGTH_LONG).show();
         re.setText(sql);
         Button starter = findViewById(R.id.button);
+        if(!gloClass.isLoadNutrient()) {
+            try {
+                AssetManager assetManager = MainActivity.this.getAssets();
+                com.google.gson.stream.JsonReader jsonReader = new com.google.gson.stream.JsonReader(new InputStreamReader(assetManager.open("nutrient_database/nutrient_amount_api.json")));
+
+                Gson gson = new GsonBuilder().create();
+                jsonReader.beginArray();
+                while (jsonReader.hasNext()) {
+                    Meal_nutrient nutrient = gson.fromJson(jsonReader, Meal_nutrient.class);
+                    gloClass.addNutrients(nutrient);
+                }
+                jsonReader.close();
+            } catch (UnsupportedEncodingException e) {
+                Toast.makeText(MainActivity.this, e.toString(), Toast.LENGTH_SHORT).show();
+            } catch (
+                    FileNotFoundException e) {
+                Toast.makeText(MainActivity.this, e.toString(), Toast.LENGTH_SHORT).show();
+            } catch (IOException e) {
+                Toast.makeText(MainActivity.this, e.toString(), Toast.LENGTH_SHORT).show();
+            }
+            gloClass.setLoadNutrient(true);
+        }
 
         starter.setOnClickListener(new View.OnClickListener() {
             @Override
