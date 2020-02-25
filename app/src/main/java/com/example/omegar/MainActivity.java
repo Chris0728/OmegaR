@@ -36,14 +36,14 @@ public class MainActivity extends AppCompatActivity {
         StrictMode.setThreadPolicy(policy);
 
         DBConnector m = new DBConnector();
-        String sql = m.connectThenSelect();
+        //String sql = m.connectThenSelect();
 
 
         TextView re = findViewById(R.id.welcomeText);
-        re.setText(sql);
+        //re.setText(sql);
 
-        Toast.makeText(MainActivity.this,sql,Toast.LENGTH_LONG).show();
-        re.setText(sql);
+        //Toast.makeText(MainActivity.this,sql,Toast.LENGTH_LONG).show();
+        //re.setText(sql);
         Button starter = findViewById(R.id.button);
         if(!gloClass.isLoadNutrient()) {
             try {

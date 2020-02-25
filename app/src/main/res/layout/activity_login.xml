@@ -53,6 +53,7 @@ android:background="@drawable/background"
         android:hint="Email"
         android:inputType="textPersonName"
         android:paddingLeft="40dp"
+        android:text="chris@chris.com"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -79,9 +80,9 @@ android:background="@drawable/background"
         android:hint="password"
         android:inputType="textPassword"
         android:paddingLeft="40dp"
+        android:text="google"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        />
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <ImageView
         android:id="@+id/imageView6"
@@ -93,11 +94,12 @@ android:background="@drawable/background"
         app:layout_constraintBottom_toBottomOf="@+id/userPassword"
         app:layout_constraintEnd_toEndOf="@+id/userPassword"
         app:srcCompat="@drawable/key" />
+
     <Button
         android:id="@+id/loginbtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="60dp"
+        android:layout_marginBottom="116dp"
         android:background="@drawable/button"
         android:text="@string/Login"
         android:textColor="@android:color/white"

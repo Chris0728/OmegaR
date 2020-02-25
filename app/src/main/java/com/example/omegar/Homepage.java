@@ -42,19 +42,20 @@ public class Homepage extends AppCompatActivity {
         yellowCircle = findViewById(R.id.yellowCircle);
         greenCircle = findViewById(R.id.greenCircle);
 
-        if(gloClass.getMeals().getSize()==0)
-        {ratioDisplay.setText("0:0");}
+        if(gloClass.getMeals().getSize()==0) {
+            ratioDisplay.setText("0:0");
+        }
         else {
             ratioDisplay.setText(gloClass.getMeals().calculate());
         }
         int range=0;
-        if(gloClass.getMeals().geto6()<=4){
+        if(gloClass.getMeals().getOmegaRatio()<=4){
             range = 1;
         }
-        if(gloClass.getMeals().geto6()>4 && gloClass.getMeals().geto6()<=10){
+        if(gloClass.getMeals().getOmegaRatio()>4 && gloClass.getMeals().getOmegaRatio()<=10){
             range =2;
         }
-        if(gloClass.getMeals().geto6()>10){
+        if(gloClass.getMeals().getOmegaRatio()>10){
             range = 3;
         }
         switch(range){
@@ -72,6 +73,7 @@ public class Homepage extends AppCompatActivity {
                     redCircle.setVisibility(View.VISIBLE);
                     break;
         }
+        //Toast.makeText(Homepage.this, "# of Meals: " + gloClass.getMeals().getSize(),Toast.LENGTH_LONG).show(); //Display #of meals currently in arraylist.
         dl = (DrawerLayout)findViewById(R.id.homepage);
         t = new ActionBarDrawerToggle(this, dl,R.string.navigation_drawer_open, R.string.navigation_drawer_close);
 
@@ -188,8 +190,8 @@ public class Homepage extends AppCompatActivity {
         inputMealBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intentMealInput = new Intent(getBaseContext(), MealInput.class);
-                startActivity(intentMealInput);
+                Intent intentMealInput2 = new Intent(getBaseContext(), MealInput2.class);
+                startActivity(intentMealInput2);
             }
         });
 
