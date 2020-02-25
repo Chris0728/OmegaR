@@ -45,26 +45,69 @@ public class Register extends AppCompatActivity {
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                boolean allValid = true;
                 boolean[] validFields = new boolean[5];
-                    /*  [0]: name
+                    /*
+                        [0]: name
                         [1]: email
                         [2]: pwd
                         [3]: pwdConf
                         [4]: terms
                      */
 
-                if(!terms.isChecked()){
-                    Toast.makeText(Register.this,"Please agree the terms and conditions before moving on",Toast.LENGTH_SHORT).show();
-                    return;
+                String[] errorMsgs = new String[5];
+                errorMsgs[0] = "Name Field Empty\n";
+                errorMsgs[1] = "Email Field Empty\n";
+                errorMsgs[2] = "Password Field Empty\n";
+                errorMsgs[3] = "Passwords Do Not Match\n";
+                errorMsgs[4] = "Please Agree to Terms and Conditions";
+
+                String name = nameField.getText().toString().trim();
+                String email = emailField.getText().toString().trim();
+                String pwd = pwdField.getText().toString().trim();
+                String pwdConf = pwdConfField.getText().toString().trim();
+
+                //Name
+                if(name.isEmpty())
+                    validFields[0] = false;
+                else
+                    validFields[0] = true;
+
+                //Email
+                if(email.isEmpty())
+                    validFields[1] = false;
+                else
+                    validFields[1] = true;
+
+                //Pwd
+                if(pwd.isEmpty())
+                    validFields[2] = false;
+                else
+                    validFields[2] = true;
+
+                //PwdConf
+                if(pwdConf.isEmpty() || !pwdConf.equals(pwd))
+                    validFields[3] = false;
+                else
+                    validFields[3] = true;
+
+                //Terms Box
+                if(!terms.isChecked())
+                    validFields[4] = false;
+                else
+                    validFields[4] = true;
+
+                StringBuilder sb = new StringBuilder("Error:\n");
+                for(int i=0; i<validFields.length; i++){
+                    if(validFields[i] == false) {
+                        allValid = false;
+                        sb.append(errorMsgs[i]);
+                    }
                 }
 
-                String name = nameField.getText().toString();
-                String email = emailField.getText().toString();
-                String pwd = pwdField.getText().toString();
-                String pwdConf = pwdConfField.getText().toString();
-
-                if(name.isEmpty()){
-
+                if(allValid == false){
+                    Toast.makeText(Register.this, sb.toString(), Toast.LENGTH_LONG).show();
+                    return;
                 }
 
 
@@ -75,7 +118,7 @@ public class Register extends AppCompatActivity {
                 intent.putExtra("Phone",phone.getText().toString());
                 intent.putExtra("Pwd",pwd.getText().toString());
                 startActivity(intent);
-                 */
+                */
             }
 
         });

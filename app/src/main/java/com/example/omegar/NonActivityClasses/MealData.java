@@ -25,7 +25,7 @@ public class MealData {
 
         o6 = o6/o3;
         saveo6 = o6;
-        builder.append(Math.round(o6) + " : "+ 1);
+        builder.append(Math.round(saveo6) + " : "+ 1);
 
         return builder.toString();
     }
