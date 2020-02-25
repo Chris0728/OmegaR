@@ -28,24 +28,21 @@ public class Profile extends AppCompatActivity {
         String pwd = profileIntent.getStringExtra("Pwd");
 */
         TextView userName = findViewById(R.id.profileName);
-        TextView userEmail = findViewById(R.id.profileEmail);
-        TextView userPass = findViewById(R.id.profilePhone); //using profilePhone textView to display password for now.
+        TextView userEmail = findViewById(R.id.profileEmail);//using profilePhone textView to display password for now.
         TextView userAge = findViewById(R.id.profileAge);
         TextView userWeight = findViewById(R.id.profileWeight);
         TextView userDisease = findViewById(R.id.profileDisease);
         TextView userGender = findViewById(R.id.profileGender);
-        TextView userBP = findViewById(R.id.profileBP);
 
         GlobalClass gloClass = (GlobalClass) getApplication();
 
         userName.setText(gloClass.getId());
         userEmail.setText(gloClass.getEmail());
-        userPass.setText(gloClass.getPass());
         userAge.setText(gloClass.getAge());
         userWeight.setText(gloClass.getWeight());
         userDisease.setText(gloClass.getDisease());
         userGender.setText(gloClass.getGender());
-        userBP.setText(gloClass.getBp());
+
 
         backbtn.setOnClickListener(new View.OnClickListener() {
             @Override
