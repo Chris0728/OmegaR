@@ -41,7 +41,7 @@ public class Homepage extends AppCompatActivity {
         greenCircle = findViewById(R.id.greenCircle);
 
         if(glo.getMeals().getSize()==0)
-        {ratioDisplay.setText("Please enter a meal");}
+        {ratioDisplay.setText("0:0");}
         else {
             ratioDisplay.setText(glo.getMeals().calculate());
         }

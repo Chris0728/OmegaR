@@ -47,8 +47,8 @@ public class Register extends AppCompatActivity {
                 Intent intent = new Intent(getBaseContext(), Homepage.class);
                 EditText name = findViewById(R.id.registerName);
                 EditText email = findViewById(R.id.registerEmail);
-                EditText Phone = findViewById(R.id.registerPhone);
-                EditText Pwd = findViewById(R.id.registerPwd);
+                EditText Phone = findViewById(R.id.registerPwd);
+                EditText Pwd = findViewById(R.id.registerPwdConfirm);
                 intent.putExtra("Name",name.getText().toString());
                 intent.putExtra("Email",email.getText().toString());
                 intent.putExtra("Phone",Phone.getText().toString());
