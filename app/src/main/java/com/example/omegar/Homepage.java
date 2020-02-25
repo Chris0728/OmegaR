@@ -2,9 +2,11 @@ package com.example.omegar;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -32,7 +34,7 @@ public class Homepage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_homepage);
 
-        GlobalClass glo = (GlobalClass) getApplication();
+        final GlobalClass gloClass = (GlobalClass) getApplication();
 
 
         ratioDisplay = findViewById(R.id.ratioDisplay);
@@ -40,19 +42,19 @@ public class Homepage extends AppCompatActivity {
         yellowCircle = findViewById(R.id.yellowCircle);
         greenCircle = findViewById(R.id.greenCircle);
 
-        if(glo.getMeals().getSize()==0)
+        if(gloClass.getMeals().getSize()==0)
         {ratioDisplay.setText("0:0");}
         else {
-            ratioDisplay.setText(glo.getMeals().calculate());
+            ratioDisplay.setText(gloClass.getMeals().calculate());
         }
         int range=0;
-        if(glo.getMeals().geto6()<=4){
+        if(gloClass.getMeals().geto6()<=4){
             range = 1;
         }
-        if(glo.getMeals().geto6()>4 && glo.getMeals().geto6()<=10){
+        if(gloClass.getMeals().geto6()>4 && gloClass.getMeals().geto6()<=10){
             range =2;
         }
-        if(glo.getMeals().geto6()>10){
+        if(gloClass.getMeals().geto6()>10){
             range = 3;
         }
         switch(range){
@@ -121,10 +123,24 @@ public class Homepage extends AppCompatActivity {
                         startActivity(intentTerms);
                         break;
                     case R.id.nav_logout:
-                        Toast.makeText(Homepage.this, "Logout",Toast.LENGTH_SHORT).show();
-                        Intent intentLogout = new Intent(getBaseContext(), MainActivity.class);
-                        startActivity(intentLogout);
-                        dl.closeDrawer(nv);
+
+                        AlertDialog.Builder builder = new AlertDialog.Builder(Homepage.this);
+                        builder.setTitle("Log Out");
+                        builder.setMessage("Are you sure to log out?");
+                        // add a button
+                        builder.setPositiveButton("Log out", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                // reset the data when log out
+                                gloClass.reset();
+                                Intent intentLogout = new Intent(getBaseContext(), MainActivity.class);
+                                startActivity(intentLogout);
+                            }
+                        });
+                        builder.setNegativeButton("Cancel", null);
+                        // create and show the alert dialog
+                        AlertDialog dialog = builder.create();
+                        dialog.show();
                         break;
                     default:
                         return true;

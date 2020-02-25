@@ -60,6 +60,17 @@ public class GlobalClass extends Application {
     //METHODS
     //
     //
+    public void reset(){
+        meals = new MealData();
+        setId("");
+        setEmail("");
+        setPass(""); //delete pass?
+        setAge("");
+        setBp("");
+        setDisease("");
+        setGender("");
+        setWeight("");
+    }
     public void getUserByEmail(String email) {
         String[] temp = (new DBConnector()).dbGetUserByEmail(email);
         if (temp.length == 0) {
