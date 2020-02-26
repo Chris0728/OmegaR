@@ -1,5 +1,5 @@
 package com.example.omegar.NonActivityClasses;
-
+import java.util.Calendar;
 import java.io.Serializable;
 import java.util.Calendar;
 
@@ -10,6 +10,7 @@ public class Meal implements Serializable {
     private double amount;        //grams of food
     private double omega3Total;
     private double omega6Total;
+    private Calendar mealDate;
     //Add timestamp with custom date
     private Calendar mealDate;
     //Add picture?
@@ -17,6 +18,7 @@ public class Meal implements Serializable {
     public Meal() {
         this.omega3Total = -1;
         this.omega6Total = -1;
+        mealDate = Calendar.getInstance();
     }
 
     public Meal(String name, double omega3, double omega6, double amount) {
@@ -24,6 +26,8 @@ public class Meal implements Serializable {
         this.omega3 = omega3;
         this.omega6 = omega6;
         this.amount = amount;
+        //the date the user input the meal
+        mealDate.getInstance();
 
         this.omega3Total = calcTotal(this.omega3, this.amount);
         this.omega6Total = calcTotal(this.omega6, this.amount);

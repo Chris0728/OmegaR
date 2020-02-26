@@ -16,10 +16,28 @@
     <string name="dinner">Dinner</string>
     <string name="lunch">Lunch</string>
     <string name="enter_meal">Enter meal</string>
-    <string-array name="meal_names">
-        <item>French Fries</item>
-        <item>Ground Beef</item>
-        <item>Rice</item>
+    <string-array name="title">
+        <item>Omega-6 vegetable oils as a driver of coronary heart disease: the oxidized linoleic acid hypothesis | Open Heart</item>
+        <item>Re-evaluation of the traditional diet-heart hypothesis: analysis of recovered data from Minnesota Coronary Experiment (1968-73) | The BMJ</item>
+        <item>Use of dietary linoleic acid for secondary prevention of coronary heart disease and death: evaluation of recovered data from the Sydney Diet Heart Study and updated meta-analysis | The BMJ</item>
+        <item>Lowering the linoleic acid to alpha-linoleic acid ratio decreases the production of inflammatory mediators by cultured human endothelial cells - ScienceDirect</item>
+        <item>Healthcare  | Free Full-Text | Linoleic Acid: A Nutritional Quandary | HTML</item>
+    </string-array>
+    <string-array name="content">
+        <item>The intake of omega-6 vegetable oils, particularly soybean oil, began to increase in the USA starting in the early 1900s at a time when the consumption of butter and lard was on the decline.1 This caused a more than two-fold increase in the intake of linoleic acid, the main omega-6 polyunsaturated fat found in vegetable oils, which now makes up around 8% to 10% of total energy intake in the Western world. The omega-6 fat linoleic acid should not be confused with conjugated linoleic acid found in pastured animal foods.</item>
+        <item>To examine the traditional diet-heart hypothesis through recovery and analysis of previously unpublished data from the Minnesota Coronary Experiment (MCE) and to put findings in the context of existing diet-heart randomized controlled trials through a systematic review and meta-analysis.</item>
+        <item> To evaluate the effectiveness of replacing dietary saturated fat with omega 6 linoleic acid, for the secondary prevention of coronary heart disease and death.</item>
+        <item>Alpha-linolenic acid (ALA) and linoleic acid (LA) are precursors for longer-chain more unsaturated fatty acids and for lipid signalling molecules that may influence inflammatory processes through a variety of mechanisms. The actions of LA and ALA may be divergent and interdependent. The aim of this study was to investigate the incorporation and metabolism of ALA and LA in cultured in EA.hy926</item>
+        <item>Abstract: Over the course of the twentieth century, there was a 20-fold increase in consumption of vegetable oils resulting both from their increased availability and from recommendations to consume these oils as an aid to lower blood cholesterol levels. This dietary change markedly increased the consumption of linoleic acid to current levels of approximately 6% of total dietary energy. Wh</item>
+    </string-array>
+    <string-array name="education_url">
+        <item>https://openheart.bmj.com/content/5/2/e000898</item>
+        <item>https://www.bmj.com/content/353/bmj.i1246</item>
+        <item>https://www.bmj.com/content/346/bmj.e8707</item>
+        <item>https://www.sciencedirect.com/science/article/abs/pii/S095232781830245X</item>
+        <item>https://www.mdpi.com/2227-9032/5/2/25/htm</item>
+        <item>https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5827911/</item>
+        <item>https://www.sciencedirect.com/science/article/pii/S1933287418300618</item>
     </string-array>
     <string name="enter_weight_in_grams">Enter weight in grams (at least 100g)</string>
     <string name="x">X</string>

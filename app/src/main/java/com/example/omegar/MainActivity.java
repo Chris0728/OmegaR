@@ -16,7 +16,6 @@ import com.example.omegar.NonActivityClasses.DBConnector;
 
 import com.example.omegar.NonActivityClasses.GlobalClass;
 import com.example.omegar.NonActivityClasses.Meal_nutrient;
-import com.example.omegar.NonActivityClasses.foodArray;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -46,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
         if(!gloClass.isLoadNutrient()) {
             try {
                 AssetManager assetManager = MainActivity.this.getAssets();
-                com.google.gson.stream.JsonReader jsonReader = new com.google.gson.stream.JsonReader(new InputStreamReader(assetManager.open("nutrient_database/nutrient_amount_api.json")));
+                com.google.gson.stream.JsonReader jsonReader = new com.google.gson.stream.JsonReader(new InputStreamReader(assetManager.open("nutrient_database/Simplified_nutrient_amount_api.json")));
 
                 Gson gson = new GsonBuilder().create();
                 jsonReader.beginArray();
