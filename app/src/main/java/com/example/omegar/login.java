@@ -99,6 +99,7 @@ public class login extends AppCompatActivity{
                     Toast.makeText(login.this,e.toString(),Toast.LENGTH_LONG).show();
                 }
 
+
                 startActivity(intent);// why needed here?
             }
         });
