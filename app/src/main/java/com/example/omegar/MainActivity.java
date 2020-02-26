@@ -36,22 +36,7 @@ public class MainActivity extends AppCompatActivity {
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
 
-
-        //need to replace below with GloClass implementation of isOnline();
-        DBConnector m = new DBConnector();
-        if(m.isOnline()){
-            new CountDownTimer(5000, 1000) {
-                public void onTick(long millisUntilFinished) {
-                    // do something after 1s
-                }
-                public void onFinish() {
-                    // do something end times 5s
-                }
-            }.start();
-            Toast.makeText(MainActivity.this, "Online services loaded.", Toast.LENGTH_LONG).show();
-        }
-        //String sql = m.connectThenSelect();
-
+        Toast.makeText(MainActivity.this, "Online services loaded.", Toast.LENGTH_LONG).show();
 
         TextView welcomeTextField = findViewById(R.id.welcomeText);
         welcomeTextField.setVisibility(View.GONE);

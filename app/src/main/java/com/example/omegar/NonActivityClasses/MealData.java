@@ -1,14 +1,21 @@
 package com.example.omegar.NonActivityClasses;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
+import static android.icu.lang.UProperty.MATH;
+
 public class MealData {
+    public List<Meal> getMeals() {
+        return meals;
+    }
+
     List<Meal> meals = new ArrayList<Meal>();
-    double saveo6=0;
+    double saveo6 = 0;
     double o6 = 0;
     double o3 = 0;
-    int simpleRatio = 0;
+    private int simpleRatio = 0;
     //Constructor
     public MealData(){
 
@@ -19,6 +26,39 @@ public class MealData {
     public void addMeal(Meal m){
         meals.add(m);
     }
+
+
+    //Todo: 02/26/20
+
+    //This method returns an arrayList that holds all meals eaten by this user at this date
+    public List<Meal> getMealsAtDate(int date){
+        List<Meal> tempMeals = new ArrayList<Meal>();
+
+        //iterate through all meals
+        for (Meal m: meals) {
+            if(m.getMealDate() == date){
+                tempMeals.add(m);
+            }
+        }
+
+
+
+        return tempMeals;
+    }
+
+
+    //This method will calculate the total O3 from all meals eaten this date.
+    public int calculateRoundedTotalOmega3ofMealsAtDate(int date){
+        List<Meal> tempMeals = getMealsAtDate(date);
+        double total = 0;
+
+        for (Meal m: tempMeals) {
+            total += m.getOmega3();
+        }
+
+        return (int) Math.round(total);
+    }
+
 
     public String calculate(){
 
@@ -50,7 +90,6 @@ public class MealData {
             }
         }
 
-
         return builder.toString();
     }
 
@@ -58,6 +97,9 @@ public class MealData {
       return o6/o3;
     }
     public int getSize(){return meals.size();}
+    public int getSimpleRatio(){
+        return simpleRatio;
+    }
 
 
 
