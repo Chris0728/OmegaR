@@ -15,7 +15,6 @@ import com.example.omegar.NonActivityClasses.DBConnector;
 
 import com.example.omegar.NonActivityClasses.GlobalClass;
 import com.example.omegar.NonActivityClasses.Meal_nutrient;
-import com.example.omegar.NonActivityClasses.foodArray;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 

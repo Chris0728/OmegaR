@@ -2,6 +2,7 @@ package com.example.omegar.NonActivityClasses;
 
 
 import android.content.Context;
+import android.icu.text.CaseMap;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,10 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.omegar.R;
+
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
 
 import java.util.ArrayList;
 import java.util.Locale;
@@ -55,8 +60,32 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ArticleHolder>
         }
 
         void setDetails(Ed_card edCard) {
-            edCard.setAbstract("");
-            edCard.setAbstract("");
+            Title.setText(edCard.getTitle());
+            AbstractText.setText(edCard.getAbstract());
         }
+        /*private void getBodyText(final String http) {
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    final StringBuilder Titlebuilder = new StringBuilder();
+                    final StringBuilder Bodybuilder = new StringBuilder();
+                    try {
+                        String url= http;//your website url
+                        Document doc = Jsoup.connect(url).get();
+
+                        Element title = doc.head();
+                        Element body = doc.body();
+
+                        Titlebuilder.append(title.text());
+                        Bodybuilder.append(body.text());
+                        Title.setText(Titlebuilder.toString());
+                        AbstractText.setText(Bodybuilder.toString());
+
+                    } catch (Exception e) {
+                        Titlebuilder.append("Error : ").append(e.getMessage()).append("\n");
+                    }
+                }
+            }).start();
+        }*/
     }
 }

@@ -35,7 +35,8 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.8.6'
     //Layout used in the Education page
     implementation 'androidx.cardview:cardview:1.0.0'
-
+    //Used to extract text from website to preview
+    implementation 'org.jsoup:jsoup:1.11.1'
 
     //testing Implementation
     testImplementation 'junit:junit:4.12'

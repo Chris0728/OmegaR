@@ -7,7 +7,10 @@ public class Ed_card {
 
 
     //Constructor method
-    public Ed_card(){}
+    public Ed_card(String title, String Abstract){
+        setTitle(title);
+        setAbstract(Abstract);
+    }
 
     public String getAbstract() {
         return Abstract;
