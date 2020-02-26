@@ -57,18 +57,6 @@
         app:layout_constraintBottom_toTopOf="@+id/registerPwdConfirm"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <ImageView
-        android:id="@+id/imageView8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="268dp"
-        android:layout_marginRight="268dp"
-        android:layout_marginBottom="84dp"
-        android:adjustViewBounds="false"
-        app:layout_constraintBottom_toBottomOf="@+id/registerPwd"
-        app:layout_constraintEnd_toEndOf="@+id/registerPwd"
-        app:srcCompat="@drawable/key" />
-
     <EditText
         android:id="@+id/registerPwdConfirm"
         android:layout_width="wrap_content"
@@ -166,6 +154,17 @@
         app:layout_constraintBottom_toBottomOf="@+id/registerEmail"
         app:layout_constraintStart_toStartOf="@+id/registerEmail"
         app:srcCompat="@drawable/mail" />
+
+    <ImageView
+        android:id="@+id/registerconfirm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="268dp"
+        android:layout_marginRight="268dp"
+        android:layout_marginBottom="24dp"
+        app:layout_constraintBottom_toTopOf="@+id/checkedTextView"
+        app:layout_constraintEnd_toEndOf="@+id/registerPwdConfirm"
+        app:srcCompat="@drawable/key" />
 
     <androidx.constraintlayout.widget.Group
         android:id="@+id/group"
