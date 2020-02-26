@@ -1,17 +1,25 @@
 package com.example.omegar.NonActivityClasses;
 
 
+import android.content.ClipData;
+import android.content.ComponentName;
 import android.content.Context;
+import android.content.Intent;
 import android.icu.text.CaseMap;
+import android.net.Uri;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.view.menu.MenuView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.omegar.Education;
 import com.example.omegar.R;
 
 import org.jsoup.Jsoup;
@@ -26,6 +34,9 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ArticleHolder>
     private Context context;
     private ArrayList<Ed_card> Ed_card_array;
 
+
+
+
     public CardAdapter(Context context, ArrayList<Ed_card> arrayList) {
         this.context = context;
         this.Ed_card_array = arrayList;
@@ -35,6 +46,14 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ArticleHolder>
     @Override
     public ArticleHolder onCreateViewHolder(@NonNull ViewGroup parent, int i) {
         View view = LayoutInflater.from(context).inflate(R.layout.cardview, parent, false);
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(Ed_card_array.get(0).getUrl()));
+                context.startActivity(browserIntent);
+            }
+        });
         return new ArticleHolder(view);
     }
 
@@ -52,11 +71,11 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ArticleHolder>
     class ArticleHolder extends RecyclerView.ViewHolder {
 
         private TextView Title, AbstractText;
-
-        ArticleHolder(View itemView) {
+        ArticleHolder(final View itemView) {
             super(itemView);
             Title = itemView.findViewById(R.id.Title1);
             AbstractText = itemView.findViewById(R.id.AbstractText1);
+
         }
 
         void setDetails(Ed_card edCard) {

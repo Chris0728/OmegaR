@@ -117,19 +117,20 @@ public class MealInput2 extends AppCompatActivity {
                 String mealName = "";
                 double omega3 = 0, omega6 = 0;
                 */
-
+                String amountText ="";
+                String foodAte = "";
                 //Convert the user input into string
-                String amountText = foodWeightInput.getText().toString();
-                String foodAte = foodNameInput.getText().toString();
-                if(Double.parseDouble(amountText.toString())<100){
-                    Toast.makeText(MealInput2.this,"Please input more than 100g",Toast.LENGTH_LONG).show();
-                    return;
-                }
+                 amountText = foodWeightInput.getText().toString().trim();
+                 foodAte = foodNameInput.getText().toString().trim();
                 double n3amount = 0;
                 double n6amount = 0;
 
                 //if user entered something for both textViews, do the following
-                if(!amountText.equals("")&&!foodAte.equals("")){
+                if(!amountText.equals("")&&!foodAte.equals("")&&amountText!=null&&foodAte!=null){
+                    if(Double.parseDouble(amountText.toString())<100){
+                        Toast.makeText(MealInput2.this,"Please input more than 100g",Toast.LENGTH_LONG).show();
+                        return;
+                    }
                 amount = Double.parseDouble(amountText);
                 for(Meal_nutrient i : gloClass.getNutrients()){
                     if(i.food_code.equals(converted.getFoodCode(foodAte))){
@@ -213,7 +214,13 @@ public class MealInput2 extends AppCompatActivity {
                         Toast.makeText(MealInput2.this,"Please input your meal",Toast.LENGTH_SHORT).show();
                         break;
 
-                }*/}
+                }*/}else if(foodAte==null||foodAte.equals("")){
+                    Toast.makeText(MealInput2.this,"Please enter the food",Toast.LENGTH_LONG).show();
+                }
+                else if(amountText.equals("")||amountText==null){
+                    Toast.makeText(MealInput2.this,"Please enter the amount",Toast.LENGTH_LONG).show();
+                }
+
                 //if user entered both meal and weight, pass the data to another activity
                 if(valid) {
                     gloClass.setMeals(meal);
@@ -229,11 +236,7 @@ public class MealInput2 extends AppCompatActivity {
 
                     startActivity(mealIntent);
                 }
-                //else make a reminder toast message
-                else if(amountText.equals(""))
-                    Toast.makeText(MealInput2.this,"Please input the weight",Toast.LENGTH_SHORT).show();
-                else if(foodAte.equals(""))
-                    Toast.makeText(MealInput2.this,"Please input the meal",Toast.LENGTH_SHORT).show();
+
             }
 
         });

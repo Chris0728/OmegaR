@@ -28,11 +28,13 @@ public class Education extends AppCompatActivity {
     private ArrayList<Ed_card> articleList;
     private String[] titleList;
     private String[] contentList;
+    private String[] urlList;
+    int i;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_education);
-
+        urlList = this.getResources().getStringArray(R.array.education_url);
          titleList = this.getResources().getStringArray(R.array.title);
          contentList = this.getResources().getStringArray(R.array.content);
         backBtn = findViewById(R.id.back);
@@ -49,17 +51,18 @@ public class Education extends AppCompatActivity {
        CardAdapter adapter = new CardAdapter(this, articleList);
         recyclerView.setAdapter(adapter);
         recyclerView.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.VERTICAL));
-        for(int i = 0 ; i < titleList.length;i++)
+        for(i = 0 ; i < titleList.length;i++)
             getBodyText(i);
-        Toast.makeText(Education.this, "" + articleList.size(),Toast.LENGTH_LONG).show();
+
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
+        /*switch (item.getItemId()) {
             case android.R.id.home:
                 finish();
                 break;
-        }
+        }*/
+        Toast.makeText(Education.this, "" + item.getItemId(),Toast.LENGTH_LONG).show();
 
         return super.onOptionsItemSelected(item);
     }
@@ -73,7 +76,7 @@ public class Education extends AppCompatActivity {
                     Element title = doc.select("title").first();
                     Element body = doc.select("#p-2").first();*/
 
-                    Ed_card edCard = new Ed_card(titleList[i],contentList[i]);
+                    Ed_card edCard = new Ed_card(titleList[i],contentList[i],urlList[i]);
                     articleList.add(edCard);
                 } catch (Exception e) {
                     builder.append("Error : ").append(e.getMessage()).append("\n");
