@@ -12,7 +12,6 @@ public class Meal implements Serializable {
     private double omega6Total;
     private Calendar mealDate;
     //Add timestamp with custom date
-    private Calendar mealDate;
     //Add picture?
 
     public Meal() {

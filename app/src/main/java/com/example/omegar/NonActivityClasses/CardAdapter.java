@@ -28,7 +28,7 @@ import org.jsoup.nodes.Element;
 
 import java.util.ArrayList;
 import java.util.Locale;
-
+//Adapter class for displaying articles on Education page
 public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ArticleHolder> {
 
     private Context context;
@@ -46,14 +46,6 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ArticleHolder>
     @Override
     public ArticleHolder onCreateViewHolder(@NonNull ViewGroup parent, int i) {
         View view = LayoutInflater.from(context).inflate(R.layout.cardview, parent, false);
-        view.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(Ed_card_array.get(0).getUrl()));
-                context.startActivity(browserIntent);
-            }
-        });
         return new ArticleHolder(view);
     }
 
@@ -78,9 +70,17 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ArticleHolder>
 
         }
 
-        void setDetails(Ed_card edCard) {
+        void setDetails(final Ed_card edCard) {
             Title.setText(edCard.getTitle());
             AbstractText.setText(edCard.getAbstract());
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(edCard.getUrl()));
+                    context.startActivity(browserIntent);
+                }
+            });
         }
         /*private void getBodyText(final String http) {
             new Thread(new Runnable() {
