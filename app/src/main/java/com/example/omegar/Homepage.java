@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,6 +30,9 @@ public class Homepage extends AppCompatActivity {
     private TextView ratioDisplay;
     public static MealData meals = new MealData();
     private ImageView redCircle, yellowCircle, greenCircle;
+    private ProgressBar o3progress, o6progress;
+    private TextView omega3Weight;
+    private TextView omega6Weight;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +45,15 @@ public class Homepage extends AppCompatActivity {
         redCircle = findViewById(R.id.redCircle);
         yellowCircle = findViewById(R.id.yellowCircle);
         greenCircle = findViewById(R.id.greenCircle);
+
+        o3progress = findViewById(R.id.o3progress);
+        o6progress = findViewById(R.id.o6progess);
+
+        omega3Weight = findViewById(R.id.Omega3WeightView);
+        omega6Weight = findViewById(R.id.Omega6WeightView);
+
+        o6progress.setMax(17);
+        o3progress.setMax(2);
 
         if(gloClass.getMeals().getSize()==0) {
             ratioDisplay.setText("0:0");
@@ -73,6 +86,14 @@ public class Homepage extends AppCompatActivity {
                     redCircle.setVisibility(View.VISIBLE);
                     break;
         }
+
+        //Progress bar illustration
+        omega6Weight.setText(""+gloClass.getMeals().getO6());
+        omega3Weight.setText(""+gloClass.getMeals().getO3());
+        o6progress.setProgress((int)(Math.ceil(gloClass.getMeals().getO6())));
+        o3progress.setProgress((int)(Math.ceil(gloClass.getMeals().getO3())));
+
+
         //Toast.makeText(Homepage.this, "# of Meals: " + gloClass.getMeals().getSize(),Toast.LENGTH_LONG).show(); //Display #of meals currently in arraylist.
         dl = (DrawerLayout)findViewById(R.id.homepage);
         t = new ActionBarDrawerToggle(this, dl,R.string.navigation_drawer_open, R.string.navigation_drawer_close);

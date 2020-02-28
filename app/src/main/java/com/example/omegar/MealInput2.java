@@ -98,15 +98,22 @@ public class MealInput2 extends AppCompatActivity {
                 //Convert the user input into string
                 String amountText = foodWeightInput.getText().toString();
                 String foodAte = foodNameInput.getText().toString();
-                if (Double.parseDouble(amountText.toString()) < 100) {
+                /*if (Double.parseDouble(amountText.toString()) < 100) {
                     Toast.makeText(MealInput2.this, "Please input more than 100g", Toast.LENGTH_LONG).show();
                     return;
-                }
+                }*/
                 double n3amount = 0;
                 double n6amount = 0;
-
+                if (foodAte.equals("") || foodAte == null) {
+                    Toast.makeText(MealInput2.this, "Please input the food", Toast.LENGTH_LONG).show();
+                    return;
+                }
+                if (amountText.equals("") || amountText == null) {
+                    Toast.makeText(MealInput2.this, "Please input the weight", Toast.LENGTH_LONG).show();
+                    return;
+                }
                 //if user entered something for both textViews, do the following
-                if (!amountText.equals("") && !foodAte.equals("")) {
+                if (!amountText.equals("") && !foodAte.equals("") && amountText != null && foodAte != null) {
                     amount = Double.parseDouble(amountText);
                     for (Meal_nutrient i : gloClass.getCNF_nutrients()) {
                         if (i.food_code.equals(converted.getFoodCode(foodAte))) {
@@ -130,29 +137,21 @@ public class MealInput2 extends AppCompatActivity {
                     try {
                         gloClass.pushMealToDB(meal);
 
-                    } catch (SQLException e){
+                    } catch (SQLException e) {
                         Toast.makeText(MealInput2.this, "Cannot push to DB\n" + e.toString(), Toast.LENGTH_LONG).show();
                     }
 
                     Intent mealIntent = new Intent(getBaseContext(), Homepage.class);
                     startActivity(mealIntent);
                 }
-                //else make a reminder toast message
-                else if (amountText.equals(""))
-                    Toast.makeText(MealInput2.this, "Please input the weight", Toast.LENGTH_SHORT).show();
-                else if (foodAte.equals(""))
-                    Toast.makeText(MealInput2.this, "Please input the meal", Toast.LENGTH_SHORT).show();
+            }});
+                final Button backButton = findViewById(R.id.back); //change to button ID
+                backButton.setOnClickListener(new View.OnClickListener() {
+                    public void onClick(View v) {
+                        MealInput2.super.onBackPressed();
+                    }
+                });
             }
 
-        });
 
-        final Button backButton = findViewById(R.id.back); //change to button ID
-        backButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                MealInput2.super.onBackPressed();
-            }
-        });
-    }
-
-
-}
+                }

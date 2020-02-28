@@ -13,6 +13,15 @@ public class MealData {
 
     List<Meal> meals = new ArrayList<Meal>();
     double saveo6 = 0;
+
+    public double getO6() {
+        return o6;
+    }
+
+    public double getO3() {
+        return o3;
+    }
+
     double o6 = 0;
     double o3 = 0;
     private int simpleRatio = 0;
@@ -83,7 +92,7 @@ public class MealData {
         } else {
             try{
             complexRatio = o3/o6;
-            simpleRatio = (int) Math.round(complexRatio);
+            simpleRatio = (int) Math.ceil(complexRatio);
                 builder.append("1: " + simpleRatio);
             } catch (ArithmeticException e){
                 builder.append("0 : " + simpleRatio);

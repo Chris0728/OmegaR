@@ -22,9 +22,9 @@ or, do we need Async class.
 */
 
 public class DBConnector {
-    String url = "jdbc:postgresql://rds-omegaratio-db1.cpvvpcxloqfu.us-west-2.rds.amazonaws.com:5432/capstoneTesting";
-    String user = "Igat";
-    String pw = "omegaR19";
+    String url = "?";
+    String user = "?";
+    String pw = "o?";
 
 
     public DBConnector(/*String url, String user, String pw*/){
