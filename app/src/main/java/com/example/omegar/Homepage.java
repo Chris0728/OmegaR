@@ -35,8 +35,6 @@ public class Homepage extends AppCompatActivity {
         setContentView(R.layout.activity_homepage);
 
         final GlobalClass gloClass = (GlobalClass) getApplication();
-
-
         ratioDisplay = findViewById(R.id.ratioDisplay);
         redCircle = findViewById(R.id.redCircle);
         yellowCircle = findViewById(R.id.yellowCircle);
@@ -197,7 +195,11 @@ public class Homepage extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
 
+    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

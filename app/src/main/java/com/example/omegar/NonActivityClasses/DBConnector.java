@@ -27,6 +27,7 @@ public class DBConnector {
     String pw = "?";
 
 
+
     public DBConnector(/*String url, String user, String pw*/){
         /*try {
             Connection con = DriverManager.getConnection(url,user,pw);

@@ -16,6 +16,10 @@ public class MealData {
     double o6 = 0;
     double o3 = 0;
     private int simpleRatio = 0;
+
+
+
+
     //Constructor
     public MealData(){
 

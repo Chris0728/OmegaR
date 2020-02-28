@@ -259,6 +259,7 @@ public class GlobalClass extends Application {
     public MealData getMealsFromDB(String uid, String startDate, String endDate) throws SQLException {
         ResultSet rst = dbC.getMealsFromDB(uid, startDate, endDate);
         MealData userMeals = new MealData();
+
         while (rst.next()) {
 
             //below is Igat's way of forcing only date(23 because its feb 23rd) to be in calendar object for the purpose of adding a meal
@@ -311,6 +312,17 @@ public class GlobalClass extends Application {
         return (int) Math.round(total);
     }
 
+    public int calculateRoundedTotalOmega6ofMealsAtDate(int date){
+        List<Meal> tempMeals = getMealsAtDate(date);
+        double total = 0;
+
+        for (Meal m: tempMeals) {
+            total += m.getOmega6();
+        }
+
+        return (int) Math.round(total);
+    }
+
 
     //This method is purely for the sake of the mealHistory.
     //Never to be used for inserting into DB
@@ -353,6 +365,10 @@ public class GlobalClass extends Application {
         sb.append(timestamp[5]);
 
         return sb.toString();
+
+
+
+
     }
 
 }

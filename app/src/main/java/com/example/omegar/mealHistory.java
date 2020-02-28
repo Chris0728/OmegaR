@@ -108,6 +108,7 @@ public class mealHistory extends AppCompatActivity {
         isMonthly = true;
         MealData mealDataArray = gloClass.getMonthlyMeals();
         setGraphTitle("Month");
+        gloClass.loadMontlyMeals();
 
         Toast.makeText(mealHistory.this, "mealDataArray is size: " + mealDataArray.getSize(), Toast.LENGTH_LONG).show();
 
@@ -120,8 +121,8 @@ public class mealHistory extends AppCompatActivity {
 
         try {
             //int size = mealDataArray.getSize();
-            DataPoint[] tempDataPoint = new DataPoint[31];
-
+            DataPoint[] tempDataPointsForO3 = new DataPoint[31];
+            DataPoint[] tempDataPointsForO6 = new DataPoint[31];
 
             //add all meals' o3 and o6 at day date
             /*if(mealDataArray.getSize() == 0){
@@ -130,33 +131,22 @@ public class mealHistory extends AppCompatActivity {
             } else {
                 for(int i=0; i<31; i++){
                     //mealDataArray.getMealsAtDate(i);
-                    tempDataPoint[i] = new DataPoint(i+1,gloClass.calculateRoundedTotalOmega3ofMealsAtDate(i+1));
+                    tempDataPointsForO3[i] = new DataPoint(i+1,gloClass.calculateRoundedTotalOmega3ofMealsAtDate(i+1));
                 }
             }*/
 
             for(int i=0; i<31; i++){
                 //mealDataArray.getMealsAtDate(i);
-                tempDataPoint[i] = new DataPoint(i+1,gloClass.calculateRoundedTotalOmega3ofMealsAtDate(i+1));
+                tempDataPointsForO3[i] = new DataPoint(i+1,gloClass.calculateRoundedTotalOmega3ofMealsAtDate(i+1));
+                tempDataPointsForO6[i] = new DataPoint(i+1,gloClass.calculateRoundedTotalOmega6ofMealsAtDate(i+1));
             }
 
 
 
             LineGraphSeries<DataPoint> series1 = new LineGraphSeries<DataPoint>
-                    (tempDataPoint);
+                    (tempDataPointsForO3);
             LineGraphSeries<DataPoint> series2 = new LineGraphSeries<DataPoint>
-                    (new DataPoint[]{
-
-                            new DataPoint(0, (int) (Math.random() * 11)),
-                            new DataPoint(1, (int) (Math.random() * 11)),
-                            new DataPoint(2, (int) (Math.random() * 11)),
-                            new DataPoint(3, (int) (Math.random() * 11)),
-                            new DataPoint(4, (int) (Math.random() * 11)),
-                            new DataPoint(5, (int) (Math.random() * 11)),
-                            new DataPoint(6, (int) (Math.random() * 11)),
-                            new DataPoint(7, (int) (Math.random() * 11)),
-                            new DataPoint(8, (int) (Math.random() * 11)),
-                            //values past x=8 are not shown cuz it dont fit on the app screen.
-                    });
+                    (tempDataPointsForO6);
 
             /*LineGraphSeries<DataPoint> series4 = new LineGraphSeries<DataPoint>
                     (new DataPoint[]{
@@ -176,6 +166,7 @@ public class mealHistory extends AppCompatActivity {
             series1.setColor(Color.RED);
             series2.setColor(Color.BLUE);
             graph.addSeries(series1);
+            graph.addSeries(series2);
 
 
         } catch (IllegalArgumentException e) {
