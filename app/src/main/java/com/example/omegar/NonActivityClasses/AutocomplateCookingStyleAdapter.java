@@ -1,5 +1,4 @@
 package com.example.omegar.NonActivityClasses;
-
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,11 +16,13 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
-public class AutocompleteFoodAdapter extends ArrayAdapter<food> {
+import static java.util.Collections.addAll;
+
+public class AutocomplateCookingStyleAdapter extends ArrayAdapter<food>{
     //ArrayAdapter to display suggestions for autocomplete view for inputting meal
     private List<food> foodListInFull;
 
-    public AutocompleteFoodAdapter(@NonNull Context context, @NonNull List<food> foodList) {
+    public AutocomplateCookingStyleAdapter(@NonNull Context context, @NonNull List<food> foodList) {
         super(context, 0, foodList);
         foodListInFull = new ArrayList<food>(foodList);
     }
@@ -41,7 +42,7 @@ public class AutocompleteFoodAdapter extends ArrayAdapter<food> {
         food foodItem = getItem(position);
 
         if (foodItem != null) {
-            textViewName.setText(foodItem.getFood_name());
+            textViewName.setText(foodItem.getFood_CookingStyle());
         }
 
         return convertView;
@@ -62,8 +63,8 @@ public class AutocompleteFoodAdapter extends ArrayAdapter<food> {
 
                 int count = 0;
                 for(food i : foodListInFull){           //compare the user input with the food description from CNF.
-                        if(filterPattern.equals(i.getFood_description().toLowerCase().substring(0,i.getFood_description().length()<filterPattern.length()?i.getFood_description().length():filterPattern.length()).trim())){
-                            if(set.add(i.getFood_name())){
+                    if(filterPattern.equals(i.getFood_description().toLowerCase().substring(0,i.getFood_description().length()<filterPattern.length()?i.getFood_description().length():filterPattern.length()).trim())){
+                        if(set.add(i.getFood_name())){
                             suggestions.add(i);
                             count++;}
                     }
@@ -78,9 +79,9 @@ public class AutocompleteFoodAdapter extends ArrayAdapter<food> {
 
         @Override
         protected void publishResults(CharSequence constraint, FilterResults results) {
-        clear();
-        addAll((List)results.values);
-        notifyDataSetChanged();
+            clear();
+            addAll((List)results.values);
+            notifyDataSetChanged();
         }
 
         @Override
@@ -88,4 +89,5 @@ public class AutocompleteFoodAdapter extends ArrayAdapter<food> {
             return ((food)resultValue).getFood_name();
         }
     };
+
 }

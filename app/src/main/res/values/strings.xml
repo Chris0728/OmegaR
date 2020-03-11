@@ -37,7 +37,7 @@
         <item>https://www.sciencedirect.com/science/article/abs/pii/S095232781830245X</item>
         <item>https://www.mdpi.com/2227-9032/5/2/25/htm</item>
     </string-array>
-    <string name="enter_weight_in_grams">Enter weight in grams (at least 100g)</string>
+    <string name="enter_weight_in_grams">Enter weight in grams </string>
     <string name="x">X</string>
     <string name="Back">Back</string>
     <string name="Welcome_Back">Welcome back</string>
@@ -47,6 +47,7 @@
     <string name="input_meal">INPUT MEAL</string>
     <string name="omega_3">OMEGA 3</string>
     <string name="omega_6">OMEGA 6</string>
+    <string name="cookingStyle">The cooking style</string>
     <string name="termsContent">Terms and Conditions
         \n\nWelcome to Omega Ratio App! These terms and conditions outline the rules and regulations for the use of Omega Ratio \' s Website, located at https://www.termsandconditionsgenerator.com/.
     \n\nBy accessing this website we assume you accept these terms and conditions. Do not continue to use Omega Ratio App if you do not agree to take all of the terms and conditions stated on this page. Our Terms and Conditions were created with the help of the Terms And Conditions Generator and the Terms &gt; Conditions Generator.

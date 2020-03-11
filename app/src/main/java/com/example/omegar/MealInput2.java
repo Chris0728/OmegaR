@@ -39,7 +39,7 @@ public class MealInput2 extends AppCompatActivity {
         gloClass = (GlobalClass) getApplication();
         // Get a reference to the AutoCompleteTextView in the layout
         final AutoCompleteTextView foodNameInput = findViewById(R.id.autoCompleteTextView2);
-
+        final AutoCompleteTextView cookingStyle = findViewById(R.id.cookingStyle);
         final foodArray converted = new foodArray();
         try {
             //In this try clause, read and parse JSON file "food_api.json" to fill up the autocomplete textView

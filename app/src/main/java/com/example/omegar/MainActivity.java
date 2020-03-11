@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
 
-        Toast.makeText(MainActivity.this, "Online services loaded.", Toast.LENGTH_LONG).show();
+        Toast.makeText(MainActivity.this, "Online services loaded.", Toast.LENGTH_SHORT).show();
 
         TextView welcomeTextField = findViewById(R.id.welcomeText);
         welcomeTextField.setVisibility(View.GONE);
