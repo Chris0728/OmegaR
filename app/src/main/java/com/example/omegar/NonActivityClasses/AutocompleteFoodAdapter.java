@@ -20,6 +20,7 @@ import java.util.List;
 public class AutocompleteFoodAdapter extends ArrayAdapter<food> {
     //ArrayAdapter to display suggestions for autocomplete view for inputting meal
     private List<food> foodListInFull;
+    private ArrayList<food> suggestions;
 
     public AutocompleteFoodAdapter(@NonNull Context context, @NonNull List<food> foodList) {
         super(context, 0, foodList);
@@ -53,7 +54,7 @@ public class AutocompleteFoodAdapter extends ArrayAdapter<food> {
         @Override
         protected FilterResults performFiltering(CharSequence constraint) {
             FilterResults results = new FilterResults();
-            ArrayList<food> suggestions = new ArrayList<>();
+            suggestions = new ArrayList<>();
             HashSet<String> set = new HashSet<>();
             if(constraint == null || constraint.length()==0){
                 suggestions.addAll(foodListInFull);
@@ -88,4 +89,6 @@ public class AutocompleteFoodAdapter extends ArrayAdapter<food> {
             return ((food)resultValue).getFood_name();
         }
     };
+
+    public ArrayList<food> getSuggestions() {return this.suggestions;}
 }
