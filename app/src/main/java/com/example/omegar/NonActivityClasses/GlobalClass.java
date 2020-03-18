@@ -435,4 +435,41 @@ public class GlobalClass extends Application {
         return meals;
     }
 
+    //Input for following 2 methods should either be a list of meals
+    //within a given month, or meals from a given day.
+    //NOT all meals for user or you might get incorrect data
+    public double getTotalO6FromDay(ArrayList<Meal> meals, int day){
+        double total = 0;
+        Iterator<Meal> itr = meals.iterator();
+
+        Meal tempMeal = null;
+
+        while(itr.hasNext()){
+            tempMeal = itr.next();
+
+            if(tempMeal.getMealDate().get(Calendar.DATE) == day){
+                total += tempMeal.getOmega6Total();
+            }
+        }
+
+        return total;
+    }
+
+    public double getTotalO3FromDay(ArrayList<Meal> meals, int day){
+        double total = 0;
+        Iterator<Meal> itr = meals.iterator();
+
+        Meal tempMeal = null;
+
+        while(itr.hasNext()){
+            tempMeal = itr.next();
+
+            if(tempMeal.getMealDate().get(Calendar.DATE) == day){
+                total += tempMeal.getOmega3Total();
+            }
+        }
+
+        return total;
+    }
+
 }
