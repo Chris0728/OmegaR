@@ -20,11 +20,11 @@ import static java.util.Collections.addAll;
 
 public class AutocomplateCookingStyleAdapter extends ArrayAdapter<food>{
     //ArrayAdapter to display suggestions for autocomplete view for inputting meal
-    private List<food> foodListInFull;
+    private List<food> cookingStyleInFull;
 
     public AutocomplateCookingStyleAdapter(@NonNull Context context, @NonNull List<food> foodList) {
         super(context, 0, foodList);
-        foodListInFull = new ArrayList<food>(foodList);
+        cookingStyleInFull = new ArrayList<food>();
     }
     public Filter getFilter(){
         return foodFilter;
@@ -57,12 +57,12 @@ public class AutocomplateCookingStyleAdapter extends ArrayAdapter<food>{
             ArrayList<food> suggestions = new ArrayList<>();
             HashSet<String> set = new HashSet<>();
             if(constraint == null || constraint.length()==0){
-                suggestions.addAll(foodListInFull);
+                suggestions.addAll(cookingStyleInFull);
             }else{
                 String filterPattern = constraint.toString().toLowerCase().trim();
 
                 int count = 0;
-                for(food i : foodListInFull){           //compare the user input with the food description from CNF.
+                for(food i : cookingStyleInFull){
                     if(filterPattern.equals(i.getFood_description().toLowerCase().substring(0,i.getFood_description().length()<filterPattern.length()?i.getFood_description().length():filterPattern.length()).trim())){
                         if(set.add(i.getFood_name())){
                             suggestions.add(i);

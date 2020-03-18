@@ -5,13 +5,17 @@ import android.content.res.AssetManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.omegar.NonActivityClasses.AutocomplateCookingStyleAdapter;
 import com.example.omegar.NonActivityClasses.AutocompleteFoodAdapter;
 import com.example.omegar.NonActivityClasses.GlobalClass;
 import com.example.omegar.NonActivityClasses.Meal;
@@ -26,12 +30,15 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.sql.Array;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class MealInput2 extends AppCompatActivity {
     GlobalClass gloClass;
-
+    List<String> cookingStyleAvailable = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,7 +46,7 @@ public class MealInput2 extends AppCompatActivity {
         gloClass = (GlobalClass) getApplication();
         // Get a reference to the AutoCompleteTextView in the layout
         final AutoCompleteTextView foodNameInput = findViewById(R.id.autoCompleteTextView2);
-        final AutoCompleteTextView cookingStyle = findViewById(R.id.cookingStyle);
+        Spinner cookingStyle = findViewById(R.id.cookingStyle);
         final foodArray converted = new foodArray();
         try {
             //In this try clause, read and parse JSON file "food_api.json" to fill up the autocomplete textView
@@ -82,8 +89,44 @@ public class MealInput2 extends AppCompatActivity {
         // Create the adapter and set it to the AutoCompleteTextView
         //ArrayAdapter<String> adapter =
         //new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, countries);
-        AutocompleteFoodAdapter adapter = new AutocompleteFoodAdapter(this, converted.array);
+        final StringBuilder NameNCookingStyle = new StringBuilder();
+        List<food> listForAdapter = new ArrayList<>(converted.array);
+        AutocompleteFoodAdapter adapter = new AutocompleteFoodAdapter(this,listForAdapter);
         foodNameInput.setAdapter(adapter);
+        foodNameInput.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Object itemSelected = parent.getItemAtPosition(position);
+                if(itemSelected instanceof food){
+                    if(NameNCookingStyle.length()!=0)
+                        NameNCookingStyle.delete(0,NameNCookingStyle.length());
+
+                    food foodSelected = (food) itemSelected;
+                    String foodName = foodSelected.getFood_name();
+                    NameNCookingStyle.append(foodName);
+                    for(food i : converted.array){
+                        if(i.getFood_name().equals(foodName)){
+                            cookingStyleAvailable.add(i.getFood_CookingStyle());
+                        }
+                    }
+                }
+            }
+        });
+        cookingStyle.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                Object cookingStyleSelected = parent.getItemAtPosition(position);
+                    NameNCookingStyle.append(cookingStyleSelected.toString());
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+        ArrayAdapter<String> cookingStyleAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, cookingStyleAvailable);
+        cookingStyle.setAdapter(cookingStyleAdapter);
 
         final EditText foodWeightInput = findViewById(R.id.editText6);
 
@@ -97,7 +140,8 @@ public class MealInput2 extends AppCompatActivity {
 
                 //Convert the user input into string
                 String amountText = foodWeightInput.getText().toString();
-                String foodAte = foodNameInput.getText().toString();
+                String foodAte = NameNCookingStyle.toString();
+                Toast.makeText(MealInput2.this,foodAte,Toast.LENGTH_LONG).show();
                 /*if (Double.parseDouble(amountText.toString()) < 100) {
                     Toast.makeText(MealInput2.this, "Please input more than 100g", Toast.LENGTH_LONG).show();
                     return;
@@ -154,4 +198,5 @@ public class MealInput2 extends AppCompatActivity {
             }
 
 
-                }
+
+}
