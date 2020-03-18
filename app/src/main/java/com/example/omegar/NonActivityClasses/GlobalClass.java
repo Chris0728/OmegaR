@@ -288,7 +288,7 @@ public class GlobalClass extends Application {
         //NOTE: monthlyMeals.meals is different from GlobalClass.meals,
         //      monthlyMeals.meals is generated from loadMonthlyMeals
         for (Meal m: monthlyMeals.meals) {
-            if(m.getMealDate() == date){
+            if(m.getMealDate().get(Calendar.DATE) == date){
                 tempMeals.add(m);
             }
         }
