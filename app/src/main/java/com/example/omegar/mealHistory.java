@@ -15,6 +15,9 @@ import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 import com.example.omegar.NonActivityClasses.MealData;
 
+import java.util.ArrayList;
+import java.util.Calendar;
+
 
 
 public class mealHistory extends AppCompatActivity {
@@ -216,5 +219,6 @@ public class mealHistory extends AppCompatActivity {
     public void setGraphTitle(String name) {
         graphTitle.setText(name);
     }
+
 
 }

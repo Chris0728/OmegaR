@@ -45,7 +45,7 @@ public class MealData {
 
         //iterate through all meals
         for (Meal m: meals) {
-            if(m.getMealDate() == date){
+            if(m.getMealDate().get(Calendar.DATE) == date){
                 tempMeals.add(m);
             }
         }

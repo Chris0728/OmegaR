@@ -8,6 +8,7 @@ import java.util.Calendar;
 import java.sql.*; //not needed i think
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Iterator;
 import java.util.Locale;
 
     /*
@@ -35,6 +36,8 @@ public class GlobalClass extends Application {
     DBConnector dbC = new DBConnector();
     private MealData meals;
 
+    private ArrayList<Meal> allMeals;
+
 
     //MealData strictly for MealHistory.activity
     private MealData monthlyMeals;
@@ -52,6 +55,8 @@ public class GlobalClass extends Application {
         setDisease("");
         setGender("");
         setWeight("");
+
+        allMeals = new ArrayList<Meal>();
     }
 
     public GlobalClass(String name, String email, String pass, String age) {
@@ -62,6 +67,7 @@ public class GlobalClass extends Application {
         this.pass = pass;
         setAge(age);
         meals = new MealData();
+        allMeals = new ArrayList<Meal>();
     }
 
 
@@ -242,6 +248,8 @@ public class GlobalClass extends Application {
 
 
     //This method sets monthlyMeals to DB's
+    //Gets all meals within month
+    //Add all meals from same day into single datapoint
     public void loadMontlyMeals() {
         //gonna hardcode the start and end date for peer testing purposes.
         Calendar cal1 = generateCalendar(2020, 02, 1);
@@ -353,6 +361,31 @@ public class GlobalClass extends Application {
         sb.append(timestamp[5]);
 
         return sb.toString();
+    }
+
+    public ArrayList<Meal> getMealsWithinDateRange(Calendar startDate, Calendar endDate){
+        ArrayList<Meal> meals = new ArrayList<Meal>();
+        Iterator<Meal> itr = this.allMeals.iterator();
+
+        Meal tempMeal = null;
+        Calendar tempDate = null;
+        boolean finished = false;
+
+        while(itr.hasNext() && finished == false){
+            tempMeal = itr.next();
+            tempDate = tempMeal.getMealDate();
+
+            if(tempDate.after(startDate)){
+                if(tempDate.before(endDate)){
+                    meals.add(tempMeal);
+                } else {
+                    finished = true;
+                }
+            }
+        }
+
+        meals.trimToSize();
+        return meals;
     }
 
 }
