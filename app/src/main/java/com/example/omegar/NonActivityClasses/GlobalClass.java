@@ -363,6 +363,42 @@ public class GlobalClass extends Application {
         return sb.toString();
     }
 
+    //Gets meals all meals from a specific day
+    public ArrayList<Meal> getMealsFromDate(Calendar date){
+        ArrayList<Meal> meals = new ArrayList<Meal>();
+        Iterator<Meal> itr = this.allMeals.iterator();
+
+        Meal tempMeal = null;
+        Calendar tempDate = null;
+        boolean finished  = false;
+
+        //Set all fields less than day to 0
+        date.set(Calendar.HOUR, 0);
+        date.set(Calendar.MINUTE, 0);
+        date.set(Calendar.SECOND, 0);
+        date.set(Calendar.MILLISECOND, 0);
+
+        while(itr.hasNext() && finished == false){
+            tempMeal = itr.next();
+            tempDate = tempMeal.getMealDate();
+
+            tempDate.set(Calendar.HOUR, 0);
+            tempDate.set(Calendar.MINUTE, 0);
+            tempDate.set(Calendar.SECOND, 0);
+            tempDate.set(Calendar.MILLISECOND, 0);
+
+            if(date.equals(tempDate)){
+                meals.add(tempMeal);
+            } else {
+                finished = true;
+            }
+        }
+
+        meals.trimToSize();
+        return meals;
+    }
+
+    //Gets all meals within a specific range of dates
     public ArrayList<Meal> getMealsWithinDateRange(Calendar startDate, Calendar endDate){
         ArrayList<Meal> meals = new ArrayList<Meal>();
         Iterator<Meal> itr = this.allMeals.iterator();
@@ -370,6 +406,17 @@ public class GlobalClass extends Application {
         Meal tempMeal = null;
         Calendar tempDate = null;
         boolean finished = false;
+
+        //Set all fields less than day to 0
+        startDate.set(Calendar.HOUR, 0);
+        startDate.set(Calendar.MINUTE, 0);
+        startDate.set(Calendar.SECOND, 0);
+        startDate.set(Calendar.MILLISECOND, 0);
+
+        startDate.set(Calendar.HOUR, 0);
+        startDate.set(Calendar.MINUTE, 0);
+        startDate.set(Calendar.SECOND, 0);
+        startDate.set(Calendar.MILLISECOND, 0);
 
         while(itr.hasNext() && finished == false){
             tempMeal = itr.next();
