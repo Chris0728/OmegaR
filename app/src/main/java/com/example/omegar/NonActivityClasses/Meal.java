@@ -3,7 +3,7 @@ import java.util.Calendar;
 import java.io.Serializable;
 import java.util.Calendar;
 
-public class Meal implements Serializable {
+public class Meal implements Serializable, Comparable<Meal> {
     private String name;
     private double omega3;        //mg per 100g of food
     private double omega6;        //mg per 100g of food
@@ -26,7 +26,7 @@ public class Meal implements Serializable {
         this.omega6 = omega6;
         this.amount = amount;
         //the date the user input the meal
-        mealDate.getInstance();
+        mealDate = Calendar.getInstance();
 
         this.omega3Total = calcTotal(this.omega3, this.amount);
         this.omega6Total = calcTotal(this.omega6, this.amount);
@@ -100,22 +100,23 @@ public class Meal implements Serializable {
 
 
     //returns the day of the month in integer (e.g. 2020-02-23 returns 23)
-    public int getMealDate() {
-        return mealDate.get(Calendar.DATE);
+    public Calendar getMealDate() {
+        return this.mealDate;
     }
 
     public void setMealDateToNow(){
 
     }
 
-
-
-
     //General Methods
     private double calcTotal(double omegaAcid, double amount) {
         double total = (omegaAcid * amount) / 100;
 
         return total;
+    }
+
+    public int compareTo(Meal meal2) {
+        return this.mealDate.compareTo(meal2.getMealDate());
     }
 
 }
