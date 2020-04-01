@@ -84,15 +84,15 @@ public class MealInput2 extends AppCompatActivity {
 
         }
 
-        //Toast.makeText(MealInput2.this,error,Toast.LENGTH_LONG).show();
-
-        // Create the adapter and set it to the AutoCompleteTextView
-        //ArrayAdapter<String> adapter =
-        //new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, countries);
+        //String builder for separating food and cooking style
         final StringBuilder NameNCookingStyle = new StringBuilder();
+
+        //list created for autocomplete adapter
         List<food> listForAdapter = new ArrayList<>(converted.array);
         AutocompleteFoodAdapter adapter = new AutocompleteFoodAdapter(this,listForAdapter);
         foodNameInput.setAdapter(adapter);
+
+        //to obtain the value of user input/ chose for the food option
         foodNameInput.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -112,11 +112,16 @@ public class MealInput2 extends AppCompatActivity {
                 }
             }
         });
+
+        //add a default option for the spinner
         cookingStyleAvailable.add("-- Please choose one cooking style --");
+        //regular setting of the spinner adapter
         final ArrayAdapter<String> cookingStyleAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, cookingStyleAvailable);
         cookingStyleAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         cookingStyle.setAdapter(cookingStyleAdapter);
+        //set the default selected option as "-- Please choose one cooking style --"
         cookingStyle.setSelection(0);
+        //to obtain the vaule of the user chose for the cooking style
         cookingStyle.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
