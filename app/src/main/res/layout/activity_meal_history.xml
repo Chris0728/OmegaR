@@ -27,11 +27,9 @@
 
         <com.jjoe64.graphview.GraphView
             android:id="@+id/myGraph"
-            android:layout_width="300dp"
-            android:layout_height="300dp"
+            android:layout_width="350dp"
+            android:layout_height="302dp"
             android:layout_centerInParent="true"
-            android:layout_marginEnd="111dp"
-            android:layout_marginRight="111dp"
             android:layout_marginBottom="260dp"
             android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -58,6 +56,25 @@
             android:textAlignment="center"
             android:textSize="30sp"
             android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="133dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="159dp"
+            android:layout_marginLeft="159dp"
+            android:layout_marginEnd="118dp"
+            android:layout_marginRight="118dp"
+            android:layout_marginBottom="666dp"
+            android:text="Meal History"
+            android:textAllCaps="true"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="@android:color/white" />
 
     </RelativeLayout>
 

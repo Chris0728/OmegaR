@@ -19,4 +19,10 @@ public class food {
     public String getFood_description(){
         return food_description;
     }
+    public String getFood_name(){
+        return food_description.substring(0,this.getFood_description().contains(",")?this.getFood_description().indexOf(","):this.getFood_description().length());
+    }
+    public String getFood_CookingStyle(){
+        return food_description.substring(this.getFood_description().indexOf(","));
+    }
 }

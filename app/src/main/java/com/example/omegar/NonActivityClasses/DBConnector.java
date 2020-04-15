@@ -11,7 +11,7 @@ import android.widget.Toast;
 import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
-
+import java.util.Calendar;
 import java.sql.*;
 
 
@@ -22,9 +22,10 @@ or, do we need Async class.
 */
 
 public class DBConnector {
-    String url = "?";
-    String user = "?";
-    String pw = "?";
+    String url = "jdbc:postgresql://rds-omegaratio-db1.cpvvpcxloqfu.us-west-2.rds.amazonaws.com:5432/capstoneTesting";
+    String user = "Igat";
+    String pw = "omegaR19";
+
 
     public DBConnector(/*String url, String user, String pw*/){
         /*try {
@@ -49,7 +50,6 @@ public class DBConnector {
             s = s + "Connection sucessful.\n";
             Statement st = con.createStatement();
             ResultSet rst = st.executeQuery(myDB.select("*","dept"));
-
 
             s += ">>>Printing result set.\n";
             s+="+-------------------------------------+\n";
@@ -175,5 +175,66 @@ public class DBConnector {
         rst.next();
         return password.equals(rst.getString("upass").trim());
     }
+
+    public void signUserUp(String name, String email, String pwd) throws SQLException{
+        //name is not defined in userProfile relation on AWS DB. Therefore, it is not used here.
+        String s = insert("userProfile (uemail,upass) ", "('" + email + "','" + pwd + "')");
+        Connection con = DriverManager.getConnection(url,user,pw);
+        Statement st = con.createStatement();
+        st.executeUpdate(s);
+        con.close();
+    }
+
+    public boolean isOnline(){
+        boolean truth = false;
+        try {
+            Connection con = DriverManager.getConnection(url, user, pw);
+            truth = true;
+            con.close();
+        } catch (SQLException e){
+
+
+        }
+        return truth;
+    }
+
+
+    public void pushMeal(String uid, String mealDate, String mealName, double o3, double o6, double amount) throws SQLException{
+        String s = insert("userMeals", "('" + uid + "','" + mealDate + "','" + mealName + "','" + o3 + "','" + o6 + "','" + amount + "')");
+        Connection con = DriverManager.getConnection(url,user,pw);
+        Statement st = con.createStatement();
+        st.executeUpdate(s);
+        con.close();
+    }
+
+    //Get user's meals at a date range. (can be one day or whole month)
+    public ResultSet getMealsFromDB(String uid, String startDate, String endDate) throws SQLException{
+        //String sql = select("*", "userMeals WHERE uid='" + uid + "'");
+
+        String sql = buildQueryStmt(uid, "userMeals", startDate, endDate);
+        Connection con = DriverManager.getConnection(url,user,pw);
+        Statement st = con.createStatement();
+        ResultSet rst = st.executeQuery(sql);
+
+        con.close();
+        return rst;
+    }
+
+
+    //Robin's method
+    public String buildQueryStmt(String uid, String tableName, String date1, String date2) {
+        StringBuilder sb = new StringBuilder("SELECT * FROM ");
+
+        sb.append(tableName);
+        sb.append(" WHERE uid = '");
+        sb.append(uid);
+        sb.append("' AND mealDate > '");
+        sb.append(date1);
+        sb.append("' AND mealDate < '");
+        sb.append(date2 + "';");
+
+        return sb.toString();
+    }
+
 
 }

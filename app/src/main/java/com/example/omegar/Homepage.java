@@ -2,9 +2,11 @@ package com.example.omegar;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -12,6 +14,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,12 +30,15 @@ public class Homepage extends AppCompatActivity {
     private TextView ratioDisplay;
     public static MealData meals = new MealData();
     private ImageView redCircle, yellowCircle, greenCircle;
+    private ProgressBar o3progress, o6progress;
+    private TextView omega3Weight;
+    private TextView omega6Weight;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_homepage);
 
-        GlobalClass glo = (GlobalClass) getApplication();
+        final GlobalClass gloClass = (GlobalClass) getApplication();
 
 
         ratioDisplay = findViewById(R.id.ratioDisplay);
@@ -40,19 +46,29 @@ public class Homepage extends AppCompatActivity {
         yellowCircle = findViewById(R.id.yellowCircle);
         greenCircle = findViewById(R.id.greenCircle);
 
-        if(glo.getMeals().getSize()==0)
-        {ratioDisplay.setText("Please enter a meal");}
+        o3progress = findViewById(R.id.o3progress);
+        o6progress = findViewById(R.id.o6progess);
+
+        omega3Weight = findViewById(R.id.Omega3WeightView);
+        omega6Weight = findViewById(R.id.Omega6WeightView);
+
+        o6progress.setMax(17);
+        o3progress.setMax(2);
+
+        if(gloClass.getMeals().getSize()==0) {
+            ratioDisplay.setText("0:0");
+        }
         else {
-            ratioDisplay.setText(glo.getMeals().calculate());
+            ratioDisplay.setText(gloClass.getMeals().calculate());
         }
         int range=0;
-        if(glo.getMeals().geto6()<=4){
+        if(gloClass.getMeals().getOmegaRatio()<=4){
             range = 1;
         }
-        if(glo.getMeals().geto6()>4 && glo.getMeals().geto6()<=10){
+        if(gloClass.getMeals().getOmegaRatio()>4 && gloClass.getMeals().getOmegaRatio()<=10){
             range =2;
         }
-        if(glo.getMeals().geto6()>10){
+        if(gloClass.getMeals().getOmegaRatio()>10){
             range = 3;
         }
         switch(range){
@@ -70,6 +86,15 @@ public class Homepage extends AppCompatActivity {
                     redCircle.setVisibility(View.VISIBLE);
                     break;
         }
+
+        //Progress bar illustration
+        omega6Weight.setText(""+gloClass.getMeals().getO6());
+        omega3Weight.setText(""+gloClass.getMeals().getO3());
+        o6progress.setProgress((int)(Math.ceil(gloClass.getMeals().getO6())));
+        o3progress.setProgress((int)(Math.ceil(gloClass.getMeals().getO3())));
+
+
+        //Toast.makeText(Homepage.this, "# of Meals: " + gloClass.getMeals().getSize(),Toast.LENGTH_LONG).show(); //Display #of meals currently in arraylist.
         dl = (DrawerLayout)findViewById(R.id.homepage);
         t = new ActionBarDrawerToggle(this, dl,R.string.navigation_drawer_open, R.string.navigation_drawer_close);
 
@@ -121,10 +146,24 @@ public class Homepage extends AppCompatActivity {
                         startActivity(intentTerms);
                         break;
                     case R.id.nav_logout:
-                        Toast.makeText(Homepage.this, "Logout",Toast.LENGTH_SHORT).show();
-                        Intent intentLogout = new Intent(getBaseContext(), MainActivity.class);
-                        startActivity(intentLogout);
-                        dl.closeDrawer(nv);
+
+                        AlertDialog.Builder builder = new AlertDialog.Builder(Homepage.this);
+                        builder.setTitle("Log Out");
+                        builder.setMessage("Are you sure to log out?");
+                        // add a button
+                        builder.setPositiveButton("Log out", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                // reset the data when log out
+                                gloClass.reset();
+                                Intent intentLogout = new Intent(getBaseContext(), MainActivity.class);
+                                startActivity(intentLogout);
+                            }
+                        });
+                        builder.setNegativeButton("Cancel", null);
+                        // create and show the alert dialog
+                        AlertDialog dialog = builder.create();
+                        dialog.show();
                         break;
                     default:
                         return true;
@@ -172,8 +211,8 @@ public class Homepage extends AppCompatActivity {
         inputMealBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intentMealInput = new Intent(getBaseContext(), MealInput.class);
-                startActivity(intentMealInput);
+                Intent intentMealInput2 = new Intent(getBaseContext(), MealInput2.class);
+                startActivity(intentMealInput2);
             }
         });
 

@@ -18,6 +18,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="268dp"
+        android:layout_marginRight="268dp"
+        android:layout_marginBottom="24dp"
+        app:layout_constraintBottom_toBottomOf="@+id/registerPwd"
+        app:layout_constraintEnd_toEndOf="@+id/registerPwd"
+        app:srcCompat="@drawable/key" />
+
     <EditText
         android:id="@+id/registerEmail"
         android:layout_width="wrap_content"
@@ -27,20 +38,6 @@
         android:background="@drawable/textinput"
         android:ems="10"
         android:hint="Email"
-        android:inputType="textPersonName"
-        android:paddingLeft="40dp"
-        app:layout_constraintBottom_toTopOf="@+id/registerPhone"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <EditText
-        android:id="@+id/registerPhone"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="52dp"
-        android:layout_marginRight="52dp"
-        android:background="@drawable/textinput"
-        android:ems="10"
-        android:hint="phone number"
         android:inputType="textPersonName"
         android:paddingLeft="40dp"
         app:layout_constraintBottom_toTopOf="@+id/registerPwd"
@@ -54,7 +51,21 @@
         android:layout_marginRight="52dp"
         android:background="@drawable/textinput"
         android:ems="10"
-        android:hint="password"
+        android:hint="Password"
+        android:inputType="textPersonName"
+        android:paddingLeft="40dp"
+        app:layout_constraintBottom_toTopOf="@+id/registerPwdConfirm"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <EditText
+        android:id="@+id/registerPwdConfirm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="52dp"
+        android:layout_marginRight="52dp"
+        android:background="@drawable/textinput"
+        android:ems="10"
+        android:hint="Confirm password"
         android:inputType="textPersonName"
         android:paddingLeft="40dp"
         app:layout_constraintBottom_toTopOf="@+id/checkedTextView"
@@ -89,11 +100,11 @@
         android:id="@+id/register"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="60dp"
+        android:layout_marginBottom="32dp"
         android:background="@drawable/button"
         android:text="Register"
         android:textColor="@android:color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/view2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent" />
@@ -144,21 +155,21 @@
         app:layout_constraintStart_toStartOf="@+id/registerEmail"
         app:srcCompat="@drawable/mail" />
 
-    <androidx.constraintlayout.widget.Group
-        android:id="@+id/group"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
     <ImageView
-        android:id="@+id/imageView5"
+        android:id="@+id/registerconfirm"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="268dp"
         android:layout_marginRight="268dp"
-        android:layout_marginBottom="20dp"
-        app:layout_constraintBottom_toBottomOf="@+id/registerPhone"
-        app:layout_constraintEnd_toEndOf="@+id/registerPhone"
-        app:srcCompat="@drawable/phone" />
+        android:layout_marginBottom="24dp"
+        app:layout_constraintBottom_toTopOf="@+id/checkedTextView"
+        app:layout_constraintEnd_toEndOf="@+id/registerPwdConfirm"
+        app:srcCompat="@drawable/key" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
     <androidx.constraintlayout.widget.Group
         android:id="@+id/group2"

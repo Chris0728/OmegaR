@@ -1,5 +1,4 @@
 package com.example.omegar.NonActivityClasses;
-
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,14 +16,15 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
-public class AutocompleteFoodAdapter extends ArrayAdapter<food> {
-    //ArrayAdapter to display suggestions for autocomplete view for inputting meal
-    private List<food> foodListInFull;
-    private ArrayList<food> suggestions;
+import static java.util.Collections.addAll;
 
-    public AutocompleteFoodAdapter(@NonNull Context context, @NonNull List<food> foodList) {
+public class AutocomplateCookingStyleAdapter extends ArrayAdapter<food>{
+    //ArrayAdapter to display suggestions for autocomplete view for inputting meal
+    private List<food> cookingStyleInFull;
+
+    public AutocomplateCookingStyleAdapter(@NonNull Context context, @NonNull List<food> foodList) {
         super(context, 0, foodList);
-        foodListInFull = new ArrayList<food>(foodList);
+        cookingStyleInFull = new ArrayList<food>();
     }
     public Filter getFilter(){
         return foodFilter;
@@ -42,7 +42,7 @@ public class AutocompleteFoodAdapter extends ArrayAdapter<food> {
         food foodItem = getItem(position);
 
         if (foodItem != null) {
-            textViewName.setText(foodItem.getFood_name());
+            textViewName.setText(foodItem.getFood_CookingStyle());
         }
 
         return convertView;
@@ -54,17 +54,17 @@ public class AutocompleteFoodAdapter extends ArrayAdapter<food> {
         @Override
         protected FilterResults performFiltering(CharSequence constraint) {
             FilterResults results = new FilterResults();
-            suggestions = new ArrayList<>();
+            ArrayList<food> suggestions = new ArrayList<>();
             HashSet<String> set = new HashSet<>();
             if(constraint == null || constraint.length()==0){
-                suggestions.addAll(foodListInFull);
+                suggestions.addAll(cookingStyleInFull);
             }else{
                 String filterPattern = constraint.toString().toLowerCase().trim();
 
                 int count = 0;
-                for(food i : foodListInFull){           //compare the user input with the food description from CNF.
-                        if(filterPattern.equals(i.getFood_description().toLowerCase().substring(0,i.getFood_description().length()<filterPattern.length()?i.getFood_description().length():filterPattern.length()).trim())){
-                            if(set.add(i.getFood_name())){
+                for(food i : cookingStyleInFull){
+                    if(filterPattern.equals(i.getFood_description().toLowerCase().substring(0,i.getFood_description().length()<filterPattern.length()?i.getFood_description().length():filterPattern.length()).trim())){
+                        if(set.add(i.getFood_name())){
                             suggestions.add(i);
                             count++;}
                     }
@@ -79,9 +79,9 @@ public class AutocompleteFoodAdapter extends ArrayAdapter<food> {
 
         @Override
         protected void publishResults(CharSequence constraint, FilterResults results) {
-        clear();
-        addAll((List)results.values);
-        notifyDataSetChanged();
+            clear();
+            addAll((List)results.values);
+            notifyDataSetChanged();
         }
 
         @Override
@@ -90,5 +90,4 @@ public class AutocompleteFoodAdapter extends ArrayAdapter<food> {
         }
     };
 
-    public ArrayList<food> getSuggestions() {return this.suggestions;}
 }

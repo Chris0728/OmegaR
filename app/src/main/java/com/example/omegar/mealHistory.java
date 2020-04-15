@@ -1,14 +1,22 @@
 package com.example.omegar;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.graphics.Color;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.omegar.NonActivityClasses.GlobalClass;
+import com.example.omegar.NonActivityClasses.Meal;
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
+import com.example.omegar.NonActivityClasses.MealData;
+
+import java.util.ArrayList;
+import java.util.Calendar;
 
 
 
@@ -23,7 +31,7 @@ public class mealHistory extends AppCompatActivity {
     TextView graphTitle;
     GraphView graph;                                //The bug that caused FATAL error was due to fact that graph was initialized here and not in onCreate method LMAO!
                                                     //I also removed final type because I want the graph to be dynamic.
-
+    GlobalClass gloClass;
 
     // TODO: 11/26/2019 Methods below were designed to input dummy values. Refine methods when we are in the next semester/implementing DB.
     //  e.g.
@@ -35,9 +43,13 @@ public class mealHistory extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_meal_history);
-
+        gloClass = (GlobalClass) getApplication();
+        //refresh gloClass.monthlyMeals incase user just added a meal or meals in previous activity.
+        gloClass.loadMontlyMeals();
 
         graph = (GraphView) findViewById(R.id.myGraph);
+        graph.getViewport().setYAxisBoundsManual(true);
+        graph.getViewport().setXAxisBoundsManual(true);
         graph.setVisibility(View.VISIBLE);
 
         graphTitle = findViewById(R.id.graphTitle);
@@ -47,8 +59,6 @@ public class mealHistory extends AppCompatActivity {
 
 
         displayWeekOrMonth = findViewById(R.id.displayWeekOrMonth);
-
-        // TODO: 11/26/2019. This button is not correctly updating dynamically the graph to monthly.
         displayWeekOrMonth.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 if (isMonthly) {
@@ -70,7 +80,6 @@ public class mealHistory extends AppCompatActivity {
 
 
     }
-
 
     //  This method might not be needed because the method resetData(E[] data) from jjoe64 will erase and create new data. Look at line 407.
     //  https://github.com/jjoe64/GraphView/blob/master/src/main/java/com/jjoe64/graphview/series/BaseSeries.java
@@ -98,15 +107,46 @@ public class mealHistory extends AppCompatActivity {
     //Update: Holy shit this actually works.
     // TODO: 11/26/2019 Change this method's name to displayMonth and delete the duplicate method above cuz it dont work.
     public void displayMonth() {
+        clearGraph();
         isMonthly = true;
+        MealData mealDataArray = gloClass.getMonthlyMeals();
         setGraphTitle("Month");
-        int arraySize = 30;
+
+        Toast.makeText(mealHistory.this, "mealDataArray is size: " + mealDataArray.getSize(), Toast.LENGTH_LONG).show();
+
+        graph.getViewport().setMinX(1);
+        graph.getViewport().setMaxX(31);
+        graph.getViewport().setMinY(0);
+        graph.getViewport().setMaxY(12);
+        int arraySize = 50;
         DataPoint[] data = new DataPoint[arraySize];
 
         try {
-            clearGraph();
+            //int size = mealDataArray.getSize();
+            DataPoint[] tempDataPoint = new DataPoint[31];
 
-            LineGraphSeries<DataPoint> series = new LineGraphSeries<DataPoint>
+
+            //add all meals' o3 and o6 at day date
+            /*if(mealDataArray.getSize() == 0){
+                //user has no meal records in DB.
+                Toast.makeText(mealHistory.this, "mealDataArray is empty", Toast.LENGTH_LONG).show();
+            } else {
+                for(int i=0; i<31; i++){
+                    //mealDataArray.getMealsAtDate(i);
+                    tempDataPoint[i] = new DataPoint(i+1,gloClass.calculateRoundedTotalOmega3ofMealsAtDate(i+1));
+                }
+            }*/
+
+            for(int i=0; i<31; i++){
+                //mealDataArray.getMealsAtDate(i);
+                tempDataPoint[i] = new DataPoint(i+1,gloClass.calculateRoundedTotalOmega3ofMealsAtDate(i+1));
+            }
+
+
+
+            LineGraphSeries<DataPoint> series1 = new LineGraphSeries<DataPoint>
+                    (tempDataPoint);
+            LineGraphSeries<DataPoint> series2 = new LineGraphSeries<DataPoint>
                     (new DataPoint[]{
 
                             new DataPoint(0, (int) (Math.random() * 11)),
@@ -120,7 +160,26 @@ public class mealHistory extends AppCompatActivity {
                             new DataPoint(8, (int) (Math.random() * 11)),
                             //values past x=8 are not shown cuz it dont fit on the app screen.
                     });
-            graph.addSeries(series);
+
+            /*LineGraphSeries<DataPoint> series4 = new LineGraphSeries<DataPoint>
+                    (new DataPoint[]{
+
+                            new DataPoint(0, (int) (2 + Math.random() * 11)),
+                            new DataPoint(1, (int) (2 + Math.random() * 11)),
+                            new DataPoint(2, (int) (2 + Math.random() * 11)),
+                            new DataPoint(3, (int) (2 + Math.random() * 11)),
+                            new DataPoint(4, (int) (2 + Math.random() * 11)),
+                            new DataPoint(5, (int) (2 + Math.random() * 11)),
+                            new DataPoint(6, (int) (2 + Math.random() * 11)),
+                            new DataPoint(7, (int) (2 + Math.random() * 11)),
+                            new DataPoint(8, (int) (2 + Math.random() * 11)),
+                            //values past x=8 are not shown cuz it dont fit on the app screen.
+                    });*/
+
+            series1.setColor(Color.RED);
+            series2.setColor(Color.BLUE);
+            graph.addSeries(series1);
+
 
         } catch (IllegalArgumentException e) {
             Toast.makeText(mealHistory.this, e.getMessage(), Toast.LENGTH_LONG).show();
@@ -132,6 +191,10 @@ public class mealHistory extends AppCompatActivity {
 
         isMonthly = false;
         setGraphTitle("Week");
+        graph.getViewport().setMinX(1);
+        graph.getViewport().setMaxX(7);
+        graph.getViewport().setMinY(0);
+        graph.getViewport().setMaxY(12);
         try {
             //to remove existing graph data, if any.
             // TODO: 11/26/2019 Is clearGraph really needed?
@@ -156,5 +219,6 @@ public class mealHistory extends AppCompatActivity {
     public void setGraphTitle(String name) {
         graphTitle.setText(name);
     }
+
 
 }
