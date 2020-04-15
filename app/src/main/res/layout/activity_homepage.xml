@@ -55,7 +55,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.037"
-        android:background="@drawable/profileicon" />
+        android:background="@drawable/profileicon"
+            />
 
     <ImageButton
         android:id="@+id/burgermenu"
@@ -185,6 +186,7 @@
             android:layout_marginLeft="11dp"
             android:layout_marginBottom="32dp"
             android:text="TextView"
+            android:maxLength="4"
             app:layout_constraintBottom_toTopOf="@+id/Omega3WeightView"
             app:layout_constraintEnd_toEndOf="@+id/Omega3WeightView"
             app:layout_constraintHorizontal_bias="1.0"
@@ -198,6 +200,7 @@
             android:layout_marginLeft="24dp"
             android:layout_marginBottom="16dp"
             android:text="TextView"
+            android:maxLength="4"
             app:layout_constraintBottom_toTopOf="@+id/input_meal_button"
             app:layout_constraintStart_toEndOf="@+id/o3progress" />
 
