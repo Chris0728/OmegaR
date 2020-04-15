@@ -39,23 +39,11 @@
         android:id="@+id/imageView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="13dp"
-        app:layout_constraintBottom_toTopOf="@+id/imageView4"
-        app:layout_constraintEnd_toStartOf="@+id/view2"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/view2"
-        app:srcCompat="@drawable/icon" />
-
-    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="147dp"
-        android:layout_height="43dp"
-        android:layout_marginBottom="119dp"
+        android:layout_marginBottom="136dp"
         app:layout_constraintBottom_toTopOf="@+id/welcomeText"
         app:layout_constraintEnd_toStartOf="@+id/view2"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/view2"
-        app:srcCompat="@drawable/omegar" />
+        app:srcCompat="@drawable/logo" />
 
     <TextView
         android:id="@+id/welcomeText"
